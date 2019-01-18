@@ -1,7 +1,10 @@
 function Shape(x, y, id) {
     this.pos = new Vector(x, y);
     this.rotation = 0;
+    this.timestamp = 0;
     this.id = id;
+    this.reload = 1000 / 3;
+    this.cooldown = this.reload;
     this.vel = new Vector(random(-1, 1) / 10, random(-1, 1) / 10);
     this.pushVel = new Vector(0, 0);
     this.rotationSpeed = 0;
@@ -59,12 +62,12 @@ function Shape(x, y, id) {
             this.pushVel.y = -Math.atan2(other.pos.y - this.pos.y, other.pos.x - this.pos.x) * (other.speed / 4);
             other.pos.x += Math.atan2(other.pos.x - this.pos.x, other.pos.y - this.pos.y) * 0.5;
             other.pos.y += Math.atan2(other.pos.y - this.pos.y, other.pos.x - this.pos.x) * 0.5;
-            if(cooldown >= reload){
+            if(this.cooldown >= this.reload){
                 this.health - other.damage;
-                cooldown = 0;
-                timestamp = time.getDate();
+                this.cooldown = 0;
+                this. timestamp = time.getDate();
             }else{
-                cooldown = time.getDate() - timestamp;
+                this.cooldown = time.getDate() - this.timestamp;
             }
             other.speed -= 0.1;
             other.lifetime--;
