@@ -121,7 +121,7 @@ function Shape(x, y, id) {
                 c.restore();
                 break;
         }
-        c.fillText(this.id, this.pos.x, this.pos.y - 20);
+       // c.fillText(this.id, this.pos.x, this.pos.y - 20);
     };
 }
 
