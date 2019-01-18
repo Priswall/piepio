@@ -57,6 +57,14 @@ function Shape(x, y, id) {
             this.pushVel.y = -Math.atan2(other.pos.y - this.pos.y, other.pos.x - this.pos.x) * (other.speed / 4);
             other.pos.x += Math.atan2(other.pos.x - this.pos.x, other.pos.y - this.pos.y) * 0.5;
             other.pos.y += Math.atan2(other.pos.y - this.pos.y, other.pos.x - this.pos.x) * 0.5;
+            /*
+            if cooldown >= reload
+                health - bullet damage
+                cooldown = 0
+                timestamp = time.getDate()
+            else
+                cooldown = time.getDate() - timestamp
+            */
             other.speed -= 0.1;
             other.lifetime--;
         }
