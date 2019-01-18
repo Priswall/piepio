@@ -63,9 +63,10 @@ function Shape(x, y, id) {
             other.pos.x += Math.atan2(other.pos.x - this.pos.x, other.pos.y - this.pos.y) * 0.5;
             other.pos.y += Math.atan2(other.pos.y - this.pos.y, other.pos.x - this.pos.x) * 0.5;
             if(this.cooldown >= this.reload){
-                this.health - other.damage;
+                this.health -= other.damage;
                 this.cooldown = 0;
                 this. timestamp = time.getTime();
+                
             }else{
                 this.cooldown = time.getTime() - this.timestamp;
             }
