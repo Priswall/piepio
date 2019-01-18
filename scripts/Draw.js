@@ -52,7 +52,7 @@ function draw() {
                 }
             }
         }
-        if(shapes[i].lifetime <= 0)
+        if(shapes[i].health <= 0)
             shapes.splice(i, 1);
         else i++;
     }
