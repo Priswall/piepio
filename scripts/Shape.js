@@ -65,9 +65,9 @@ function Shape(x, y, id) {
             if(this.cooldown >= this.reload){
                 this.health - other.damage;
                 this.cooldown = 0;
-                this. timestamp = time.getDate();
+                this. timestamp = time.getTime();
             }else{
-                this.cooldown = time.getDate() - this.timestamp;
+                this.cooldown = time.getTime() - this.timestamp;
             }
             other.speed -= 0.1;
             other.lifetime--;
