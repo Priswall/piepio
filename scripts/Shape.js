@@ -14,17 +14,17 @@ function Shape(x, y, id) {
                 case 0:
                     this.rotationSpeed = random(-1, 1) / 2;
                     this.size = 30;
-                    this.health = 75;
+                    this.health = 5;
                     break;
                 case 1:
                     this.rotationSpeed = random(-1, 1) / 4;
                     this.size = 40;
-                    this.health = 100;
+                    this.health = 10;
                     break;
                 case 2:
                     this.rotationSpeed = random(-1, 1) / 8;
                     this.size = 50;
-                    this.health = 125;
+                    this.health = 20;
                     break;
             }
         }
