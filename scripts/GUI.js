@@ -1,10 +1,10 @@
 function upgradeTankMenu() {
+    c.strokeStyle = colors.strokegray;
     c.fillStyle = "rgb(255, 100, 100)";
     c.fillRect(10, 10, 150, 150);
     c.fillStyle = "rgb(200, 100, 100)";
     c.fillRect(10, 10, 150, 75);
     c.strokeRect(10, 10, 150, 150);
-    c.strokeStyle = colors.strokegray;
         
     c.fillStyle = colors.lightgray;
     c.strokeStyle = colors.strokegray;
