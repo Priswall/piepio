@@ -1,3 +1,5 @@
+//The names of the classes. Used for code that is easier to read
+//Ex: classes.indexOf("Twin") returns the id of the "Twin" class
 var classes = [
     "Basic Tank",
     "Twin",
@@ -19,6 +21,8 @@ function Tank(x, y, rotation, team, id) {
     this.maxSpeed = new Vector(3, 3);
     this.bulletDamage = new Vector(1, 1);
     this.barrels = [new Barrel(0, 0, 0, 20, 50, 0)];
+    //Gets these variables from the TankStats file
+    //The x part of the vectors (i.e. this.reload.x) is the normal stat before modififying it by the stat upgrades
     this.reload = new Vector(tankstats[this.class].reload, tankstats[this.class].reload);
     this.bulletSpeed = new Vector(tankstats[this.class].bulletSpeed, tankstats[this.class].bulletSpeed);
     this.spread = new Vector(tankstats[this.class].spread, tankstats[this.class].spread);
@@ -28,14 +32,15 @@ function Tank(x, y, rotation, team, id) {
     this.barrel = 0;
     this.lvl = 75;
     this.xp = 0;
-    
+
     this.shoot = function() {
+        //Checks if the tank is reloaded and if the user is clicking
         if(this.cooldown >= this.reload.y) {
             if(mouseIsPressed) {
                 switch(this.id) {
-                    case 0:
-                    case 2:
-                    case 3:
+                    case classes.indexOf("Basic Tank"):
+                    case classes.indexOf("Sniper"):
+                    case classes.indexOf("Machine Gunner"):
                         bullets.push(new Bullet(
                             this.pos.x + Math.sin(this.rotation) * 40,
                             this.pos.y - Math.cos(this.rotation) * 40,
@@ -44,8 +49,9 @@ function Tank(x, y, rotation, team, id) {
                             0, this));
                         this.barrels[0].cooldown = 0;
                         break;
-                        
-                    case 1:
+
+                    case classes.indexOf("Twin"):
+                        //Alternate between barrels
                         switch(this.barrel) {
                             case 0:
                                 bullets.push(new Bullet(
@@ -69,8 +75,8 @@ function Tank(x, y, rotation, team, id) {
                                 break;
                         }
                         break;
-                        
-                    case 4:
+
+                    case classes.indexOf("Flank Guard"):
                         bullets.push(new Bullet(
                             this.pos.x + Math.sin(this.rotation) * 40,
                             this.pos.y - Math.cos(this.rotation) * 40,
@@ -91,11 +97,13 @@ function Tank(x, y, rotation, team, id) {
                 this.timeStamp = time.getTime();
             }
         } else {
+            //Determine if tank is reloaded
             this.cooldown = time.getTime() - this.timeStamp;
         }
     };
-    
+
     this.update = function() {
+        //Variables used to see which direction the player should move
         var up = false,
             down = false,
             left = false,
@@ -104,17 +112,17 @@ function Tank(x, y, rotation, team, id) {
         if(keys[83] || keys[40]) down = true;
         if(keys[65] || keys[37]) left = true;
         if(keys[68] || keys[39]) right = true;
-        
+
         if(up && !down) this.vel.y -= this.acc;
         if(!up && down) this.vel.y += this.acc;
         if(left && !right) this.vel.x -= this.acc;
         if(!left && right) this.vel.x += this.acc;
-        
+
         if(this.vel.x > this.maxSpeed.y) this.vel.x = this.maxSpeed.y;
         if(this.vel.x < -this.maxSpeed.y) this.vel.x = -this.maxSpeed.y;
         if(this.vel.y > this.maxSpeed.y) this.vel.y = this.maxSpeed.y;
         if(this.vel.y < -this.maxSpeed.y) this.vel.y = -this.maxSpeed.y;
-        
+
         if(!left && !right) {
             if(Math.abs(this.vel.x) < this.acc) this.vel.x = 0;
             else if(this.vel.x < 0) this.vel.x += this.acc;
@@ -125,41 +133,42 @@ function Tank(x, y, rotation, team, id) {
             else if(this.vel.y < 0) this.vel.y += this.acc;
             else if(this.vel.y > 0) this.vel.y -= this.acc;
         }
-        
+
         this.pos.x += this.vel.x;
         this.pos.y += this.vel.y;
         this.pos.x = constrain(this.pos.x, -750, 750);
         this.pos.y = constrain(this.pos.y, -750, 750);
-        
+
         this.rotation = Math.atan2(-(this.pos.x - (mouse.x - cam.x)), (this.pos.y - (mouse.y - cam.y)));
-        
+
         this.shoot();
     };
-    
+
     this.reevaluateStats = function() {
+        //Update barrels and stats when the tank class is changed
         this.class = classes[this.id];
         this.reload = new Vector(tankstats[this.class].reload, tankstats[this.class].reload);
         this.bulletSpeed = new Vector(tankstats[this.class].bulletSpeed, tankstats[this.class].bulletSpeed);
         this.spread = new Vector(tankstats[this.class].spread, tankstats[this.class].spread);
-        
+
         switch(this.id) {
-            case 1:
+            case classes.indexOf("Twin"):
                 this.barrels = [
                     new Barrel(-11, 0, 0, 20, 50, 0),
                     new Barrel(11, 0, 0, 20, 50, 0)
                 ];
                 break;
-            case 2:
+            case classes.indexOf("Sniper"):
                 this.barrels = [
                     new Barrel(0, 0, 0, 20, 60, 0)
                 ];
                 break;
-            case 3:
+            case classes.indexOf("Machine Gunner"):
                 this.barrels = [
                     new Barrel(0, 0, 1, 50, 40, 0)
                 ];
                 break;
-            case 4:
+            case classes.indexOf("Flank Guard"):
                 this.barrels = [
                     new Barrel(0, 0, 0, 20, 50, 0),
                     new Barrel(0, 0, 0, 20, 40, 180)
@@ -167,26 +176,26 @@ function Tank(x, y, rotation, team, id) {
                 break;
         }
     };
-    
+
     this.draw = function() {
-        
+
         c.save();
         c.translate(this.pos.x, this.pos.y);
         c.rotate(this.rotation);
         c.fillStyle = colors.lightgray;
         c.strokeStyle = colors.strokegray;
-        
-        this.barrels.forEach((barrel) => {
-            barrel.show();
-        });
-        
+
+        //Draw the barrels
+        this.barrels.forEach((barrel) => { barrel.show(); });
+
+        //Draw the body
         c.fillStyle = colors.lightblue;
         c.strokeStyle = colors.strokeblue;
         c.beginPath();
         c.arc(0, 0, 25, 0, 2 * Math.PI);
         c.fill();
         c.stroke();
-        
+
         c.restore();
     };
 }

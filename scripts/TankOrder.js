@@ -1,3 +1,4 @@
+//Determine what classes the tank can be changed to
 var tankorder = [
     [
         classes.indexOf("Twin"),
@@ -6,7 +7,7 @@ var tankorder = [
         classes.indexOf("Flank Guard")
     ]
 ];
-
+//Used for the upgrade screen GUI when the tank class can be changed
 var tankshow = [
     0,
     function() {
@@ -23,17 +24,17 @@ var tankshow = [
         c.lineTo(16, -32);
         c.lineTo(0, 0);
         c.fill();
-    
+
         c.beginPath();
         c.moveTo(-4, 0);
         c.lineTo(-16, -32);
         c.stroke();
-    
+
         c.beginPath();
         c.lineTo(-16, -32);
         c.lineTo(16, -32);
         c.stroke();
-    
+
         c.beginPath();
         c.lineTo(16, -32);
         c.lineTo(4, 0);

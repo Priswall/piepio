@@ -1,5 +1,6 @@
 function Shape(x, y, id) {
     this.pos = new Vector(x, y);
+    this.health = new Vector(0, 0);
     this.rotation = 0;
     this.timestamp = 0;
     this.id = id;
@@ -11,20 +12,23 @@ function Shape(x, y, id) {
     this.update = function() {
         if(Math.abs(this.rotationSpeed) < 0.05) {
             switch(this.id) {
-                case 0:
+                case 0:                 //Square
                     this.rotationSpeed = random(-1, 1) / 2;
                     this.size = 30;
-                    this.health = 5;
+                    this.health.x = 5;
+                    this.health.y = this.health.x;
                     break;
-                case 1:
+                case 1:                 //Triangle
                     this.rotationSpeed = random(-1, 1) / 4;
                     this.size = 40;
-                    this.health = 10;
+                    this.health.x = 10;
+                    this.health.y = this.health.x;
                     break;
-                case 2:
+                case 2:                 //Pentagon
                     this.rotationSpeed = random(-1, 1) / 8;
                     this.size = 50;
-                    this.health = 20;
+                    this.health.x = 20;
+                    this.health.y = this.health.x;
                     break;
             }
         }
@@ -39,13 +43,13 @@ function Shape(x, y, id) {
         if(this.pushVel.y < 0) this.pushVel.y += 0.1;
         if(Math.abs(this.pushVel.x) < 0.1) this.pushVel.x = 0;
         if(Math.abs(this.pushVel.y) < 0.1) this.pushVel.y = 0;
-        
+
         this.pos.x = constrain(this.pos.x, -750, 750);
         this.pos.y = constrain(this.pos.y, -750, 750);
         this.vel.x = constrain(this.vel.x, -0.5, 0.5);
         this.vel.y = constrain(this.vel.y, -0.5, 0.5);
     };
-    
+
     this.gotHit = function(other) {
         if(other instanceof Tank) {
             this.pushVel.x = -Math.atan2(other.pos.x - this.pos.x, other.pos.y - this.pos.y);
@@ -58,26 +62,26 @@ function Shape(x, y, id) {
             this.vel.x += this.pushVel.x / 10;
             this.vel.y += this.pushVel.y / 10;
         } else if(other instanceof Bullet) {
-            this.pushVel.x = -Math.atan2(other.pos.x - this.pos.x, other.pos.y - this.pos.y) * (other.speed / 4);
-            this.pushVel.y = -Math.atan2(other.pos.y - this.pos.y, other.pos.x - this.pos.x) * (other.speed / 4);
-            other.pos.x += Math.atan2(other.pos.x - this.pos.x, other.pos.y - this.pos.y) * 0.5;
-            other.pos.y += Math.atan2(other.pos.y - this.pos.y, other.pos.x - this.pos.x) * 0.5;
-            if(this.cooldown >= this.reload){
-                this.health -= other.damage;
-                this.cooldown = 0;
-                this. timestamp = time.getTime();
-                
-            }else{
-                this.cooldown = time.getTime() - this.timestamp;
+            var dx = this.pos.x - other.pos.x;
+            var dy = this.pos.y - other.pos.y;
+            var mag = (dx * dx + dy * dy);
+            this.pushVel.x = (dx / mag) * 75;
+            this.pushVel.y = (dy / mag) * 75;
+            if(other.cooldown >= other.reload){
+                other.pos.x += (dx / mag) * 75;
+                other.pos.y += (dy / mag) * 75;
+                this.health.y -= other.damage;
+                other.cooldown = 0;
+                other. timestamp = time.getTime();
             }
             other.speed -= 0.1;
             other.lifetime--;
         }
     };
-    
+
     this.draw = function() {
         switch(this.id) {
-            case 0:
+            case 0:                 //Square
                 c.fillStyle = colors.lightyellow;
                 c.strokeStyle = colors.strokeyellow;
                 c.save();
@@ -86,24 +90,22 @@ function Shape(x, y, id) {
                 rect(-15, -15, 30, 30);
                 c.restore();
                 break;
-                
-            case 1:
+            case 1:                 //Triangle
                 c.fillStyle = colors.lightred;
                 c.strokeStyle = colors.strokered;
                 c.save();
                 c.translate(this.pos.x, this.pos.y);
                 c.rotate(this.rotation * (Math.PI / 180));
                 c.beginPath();
-                c.moveTo(0, 34.7);
-                c.lineTo(-20, 0);
-                c.lineTo(20, 0);
-                c.lineTo(0, 34.7);
+                c.moveTo(0, 17.35);
+                c.lineTo(-20, -17.35);
+                c.lineTo(20, -17.35);
+                c.lineTo(0, 17.35);
                 c.fill();
                 c.stroke();
                 c.restore();
                 break;
-                
-            case 2:
+            case 2:                 //Pentagon
                 c.fillStyle = colors.lightpurple;
                 c.strokeStyle = colors.strokepurple;
                 c.save();
@@ -121,7 +123,15 @@ function Shape(x, y, id) {
                 c.restore();
                 break;
         }
-       // c.fillText(this.id, this.pos.x, this.pos.y - 20);
+        //Display the health if it was hit
+        if(this.health.x != this.health.y) {
+            c.strokeStyle = "rgba(0, 0, 0, 0.8)";
+            c.lineWidth = 5;
+            line(this.pos.x - (this.size / 2), this.pos.y + (this.size / 2) + 10, this.pos.x + (this.size / 2), this.pos.y + (this.size / 2) + 10);
+            c.strokeStyle = colors.lightgreen;
+            line(this.pos.x - (this.size / 2), this.pos.y + (this.size / 2) + 10, (this.pos.x - (this.size / 2)) + ((this.size / this.health.x) * this.health.y), this.pos.y + (this.size / 2) + 10);
+            c.lineWidth = 3;
+        }
     };
 }
 
