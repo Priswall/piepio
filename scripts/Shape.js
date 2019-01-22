@@ -9,6 +9,11 @@ function Shape(x, y, id) {
     this.vel = new Vector(random(-1, 1) / 10, random(-1, 1) / 10);
     this.pushVel = new Vector(0, 0);
     this.rotationSpeed = 0;
+    //Create new canvas so transparency doesn't look weird
+    this.tempCanvas = document.createElement("canvas");
+    this.tempCanvas.width = this.size + 2;
+    this.tempCanvas.height = this.size + 2;
+    
     this.update = function() {
         if(Math.abs(this.rotationSpeed) < 0.05) {
             switch(this.id) {
@@ -80,11 +85,8 @@ function Shape(x, y, id) {
     };
 
     this.draw = function() {
-        //Create new canvas so transparency doesn't look weird
-        var tempCanvas = document.createElement("canvas");
-        tempCanvas.width = this.size + 2;
-        tempCanvas.height = this.size + 2;
-        var tempC = tempCanvas.getContext("2d");
+        //Created so the shape will draw to the temporary canvas
+        var tempC = this.tempCanvas.getContext("2d");
         tempC.lineWidth = 3;
         switch(this.id) {
             case 0:                 //Square
@@ -140,7 +142,7 @@ function Shape(x, y, id) {
         c.save();
         c.translate(this.pos.x - (this.size / 2), this.pos.y - (this.size / 2));
         c.rotate(this.rotation * (Math.PI / 180));
-        c.drawImage(tempCanvas, 0, 0);
+        c.drawImage(this.tempCanvas, 0, 0);
         c.restore();
     };
 }
