@@ -132,10 +132,11 @@ function Shape(x, y, id) {
         }
         //Display the health if it was hit
         if(this.health.x != this.health.y) {
-            c.strokeStyle = "rgb(0, 0, 0, 0.8)";
-            c.lineWidth = 5;
+            c.strokeStyle = "rgba(0, 0, 0, 0.5)";
+            c.lineWidth = 7;
             line(this.pos.x - (this.size / 2), this.pos.y + (this.size / 2) + 10, this.pos.x + (this.size / 2), this.pos.y + (this.size / 2) + 10);
             c.strokeStyle = colors.lightgreen;
+            c.lineWidth = 5;
             line(this.pos.x - (this.size / 2), this.pos.y + (this.size / 2) + 10, (this.pos.x - (this.size / 2)) + ((this.size / this.health.x) * this.health.y), this.pos.y + (this.size / 2) + 10);
             c.lineWidth = 3;
         }
