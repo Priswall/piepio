@@ -95,8 +95,8 @@ function Shape(x, y, id) {
                 tempC.strokeStyle = colors.strokeyellow;
                 tempC.save();
                 tempC.translate(16, 16);
-                tempC.fillRect(-15, -15, 30, 30);
-                tempC.strokeRect(-15, -15, 30, 30);
+                tempC.fillRect(-14, -14, 30, 30);
+                tempC.strokeRect(-14, -14, 30, 30);
                 tempC.restore();
                 break;
             case 1:                 //Triangle
@@ -105,10 +105,10 @@ function Shape(x, y, id) {
                 tempC.save();
                 tempC.translate(21, 18.35);
                 tempC.beginPath();
-                tempC.moveTo(0, 17.35);
-                tempC.lineTo(-20, -17.35);
-                tempC.lineTo(20, -17.35);
-                tempC.lineTo(0, 17.35);
+                tempC.moveTo(1, 18.35);
+                tempC.lineTo(-21, -16.35);
+                tempC.lineTo(21, -16.35);
+                tempC.lineTo(1, 18.35);
                 tempC.fill();
                 tempC.stroke();
                 tempC.restore();
@@ -119,12 +119,12 @@ function Shape(x, y, id) {
                 tempC.save();
                 tempC.translate(29.5, 25.3);
                 tempC.beginPath();
-                tempC.moveTo(-28.5, 9.3);
-                tempC.lineTo(0, 30);
-                tempC.lineTo(28.5, 9.3);
-                tempC.lineTo(17.6, -24.3);
-                tempC.lineTo(-17.6, -24.3);
-                tempC.lineTo(-28.5, 9.3);
+                tempC.moveTo(-27.5, 10.3);
+                tempC.lineTo(1, 31);
+                tempC.lineTo(29.5, 10.3);
+                tempC.lineTo(18.6, -23.3);
+                tempC.lineTo(-16.6, -23.3);
+                tempC.lineTo(-27.5, 10.3);
                 tempC.fill();
                 tempC.stroke();
                 tempC.restore();
