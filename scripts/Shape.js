@@ -80,58 +80,63 @@ function Shape(x, y, id) {
     };
 
     this.draw = function() {
+        //Create new canvas so transparency doesn't look weird
+        var tempCanvas = document.createElement("canvas");
+        var tempC = tempCanvas.getContext("2d");
         switch(this.id) {
             case 0:                 //Square
-                c.fillStyle = colors.lightyellow;
-                c.strokeStyle = colors.strokeyellow;
-                c.save();
-                c.translate(this.pos.x, this.pos.y);
-                c.rotate(this.rotation * (Math.PI / 180));
+                tempC.fillStyle = colors.lightyellow;
+                tempC.strokeStyle = colors.strokeyellow;
+                tempC.save();
+                tempC.translate(this.pos.x, this.pos.y);
+                tempC.rotate(this.rotation * (Math.PI / 180));
                 rect(-15, -15, 30, 30);
-                c.restore();
+                tempC.restore();
                 break;
             case 1:                 //Triangle
-                c.fillStyle = colors.lightred;
-                c.strokeStyle = colors.strokered;
-                c.save();
-                c.translate(this.pos.x, this.pos.y);
-                c.rotate(this.rotation * (Math.PI / 180));
-                c.beginPath();
-                c.moveTo(0, 17.35);
-                c.lineTo(-20, -17.35);
-                c.lineTo(20, -17.35);
-                c.lineTo(0, 17.35);
-                c.fill();
-                c.stroke();
-                c.restore();
+                tempC.fillStyle = colors.lightred;
+                tempC.strokeStyle = colors.strokered;
+                tempC.save();
+                tempC.translate(this.pos.x, this.pos.y);
+                tempC.rotate(this.rotation * (Math.PI / 180));
+                tempC.beginPath();
+                tempC.moveTo(0, 17.35);
+                tempC.lineTo(-20, -17.35);
+                tempC.lineTo(20, -17.35);
+                tempC.lineTo(0, 17.35);
+                tempC.fill();
+                tempC.stroke();
+                tempC.restore();
                 break;
             case 2:                 //Pentagon
-                c.fillStyle = colors.lightpurple;
-                c.strokeStyle = colors.strokepurple;
-                c.save();
-                c.translate(this.pos.x, this.pos.y);
-                c.rotate(this.rotation * (Math.PI / 180));
-                c.beginPath();
-                c.moveTo(-28.5, 9.3);
-                c.lineTo(0, 30);
-                c.lineTo(28.5, 9.3);
-                c.lineTo(17.6, -24.3);
-                c.lineTo(-17.6, -24.3);
-                c.lineTo(-28.5, 9.3);
-                c.fill();
-                c.stroke();
-                c.restore();
+                tempC.fillStyle = colors.lightpurple;
+                tempC.strokeStyle = colors.strokepurple;
+                tempC.save();
+                tempC.translate(this.pos.x, this.pos.y);
+                tempC.rotate(this.rotation * (Math.PI / 180));
+                tempC.beginPath();
+                tempC.moveTo(-28.5, 9.3);
+                tempC.lineTo(0, 30);
+                tempC.lineTo(28.5, 9.3);
+                tempC.lineTo(17.6, -24.3);
+                tempC.lineTo(-17.6, -24.3);
+                tempC.lineTo(-28.5, 9.3);
+                tempC.fill();
+                tempC.stroke();
+                tempC.restore();
                 break;
         }
         //Display the health if it was hit
         if(this.health.x != this.health.y) {
-            c.strokeStyle = "rgba(0, 0, 0, 0.8)";
-            c.lineWidth = 5;
+            tempC.strokeStyle = "rgba(0, 0, 0, 0.8)";
+            tempC.lineWidth = 5;
             line(this.pos.x - (this.size / 2), this.pos.y + (this.size / 2) + 10, this.pos.x + (this.size / 2), this.pos.y + (this.size / 2) + 10);
-            c.strokeStyle = colors.lightgreen;
+            tempC.strokeStyle = colors.lightgreen;
             line(this.pos.x - (this.size / 2), this.pos.y + (this.size / 2) + 10, (this.pos.x - (this.size / 2)) + ((this.size / this.health.x) * this.health.y), this.pos.y + (this.size / 2) + 10);
-            c.lineWidth = 3;
+            tempC.lineWidth = 3;
         }
+        //Draw temporary canvas onto original canvas
+        c.drawImage(tempCanvas, 0, 0);
     };
 }
 
