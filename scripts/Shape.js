@@ -143,7 +143,7 @@ function Shape(x, y, id) {
         c.save();
         c.translate(this.pos.x + (this.size / 2), this.pos.y + (this.size / 2));
         c.rotate(this.rotation * (Math.PI / 180));
-        c.drawImage(this.tempCanvas, -this.size / 2, -this.size / 2);
+        c.drawImage(this.tempCanvas, -this.size, -this.size);
         c.restore();
     };
 }
