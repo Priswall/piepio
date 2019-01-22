@@ -87,6 +87,7 @@ function Shape(x, y, id) {
     this.draw = function() {
         //Created so the shape will draw to the temporary canvas
         var tempC = this.tempCanvas.getContext("2d");
+        tempC.clearRect(0, 0, this.tempCanvas.width, this.tempCanvas.height);
         tempC.lineWidth = 3;
         switch(this.id) {
             case 0:                 //Square
