@@ -91,7 +91,7 @@ function Shape(x, y, id) {
                 tempC.fillStyle = colors.lightyellow;
                 tempC.strokeStyle = colors.strokeyellow;
                 tempC.save();
-                tempC.translate(this.pos.x, this.pos.y);
+                tempC.translate(15, 15);
                 tempC.rotate(this.rotation * (Math.PI / 180));
                 tempC.fillRect(-15, -15, 30, 30);
                 tempC.strokeRect(-15, -15, 30, 30);
@@ -101,7 +101,7 @@ function Shape(x, y, id) {
                 tempC.fillStyle = colors.lightred;
                 tempC.strokeStyle = colors.strokered;
                 tempC.save();
-                tempC.translate(this.pos.x + 20, this.pos.y + 17.35);
+                tempC.translate(20, 17.35);
                 tempC.rotate(this.rotation * (Math.PI / 180));
                 tempC.beginPath();
                 tempC.moveTo(0, 17.35);
@@ -116,7 +116,7 @@ function Shape(x, y, id) {
                 tempC.fillStyle = colors.lightpurple;
                 tempC.strokeStyle = colors.strokepurple;
                 tempC.save();
-                tempC.translate(this.pos.x + 28.5, this.pos.y + 24.3);
+                tempC.translate(28.5, 24.3);
                 tempC.rotate(this.rotation * (Math.PI / 180));
                 tempC.beginPath();
                 tempC.moveTo(-28.5, 9.3);
