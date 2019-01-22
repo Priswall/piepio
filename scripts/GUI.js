@@ -24,8 +24,8 @@ function upgradeTankMenu() {
     c.restore();
     c.fillStyle = "white";
     c.strokeStyle = "rgba(100, 100, 100, 0.5)";
-    c.strokeText(classes[tankorder[player.id][0]], 85, 135);
-    c.fillText(classes[tankorder[player.id][0]], 85, 135);
+    c.strokeText(classes[tankorder[player.id][0]], 85, 145);
+    c.fillText(classes[tankorder[player.id][0]], 85, 145);
     if(tankorder[player.id].length > 1) {
         c.strokeStyle = colors.strokegray;
         c.fillStyle = "rgb(255, 255, 100)";
@@ -49,8 +49,8 @@ function upgradeTankMenu() {
         c.restore();
         c.fillStyle = "white";
         c.strokeStyle = "rgba(100, 100, 100, 0.5)";
-        c.strokeText(classes[tankorder[player.id][1]], 245, 135);
-        c.fillText(classes[tankorder[player.id][1]], 245, 135);
+        c.strokeText(classes[tankorder[player.id][1]], 245, 145);
+        c.fillText(classes[tankorder[player.id][1]], 245, 145);
     }
     if(tankorder[player.id].length > 2) {
         c.strokeStyle = colors.strokegray;
@@ -75,8 +75,8 @@ function upgradeTankMenu() {
         c.restore();
         c.fillStyle = "white";
         c.strokeStyle = "rgba(100, 100, 100, 0.5)";
-        c.strokeText(classes[tankorder[player.id][2]], 85, 300);
-        c.fillText(classes[tankorder[player.id][2]], 85, 300);
+        c.strokeText(classes[tankorder[player.id][2]], 85, 310);
+        c.fillText(classes[tankorder[player.id][2]], 85, 310);
     }
     if(tankorder[player.id].length > 3) {
         c.strokeStyle = colors.strokegray;
@@ -101,8 +101,8 @@ function upgradeTankMenu() {
         c.restore();
         c.fillStyle = "white";
         c.strokeStyle = "rgba(100, 100, 100, 0.5)";
-        c.strokeText(classes[tankorder[player.id][3]], 245, 300);
-        c.fillText(classes[tankorder[player.id][3]], 245, 300);
+        c.strokeText(classes[tankorder[player.id][3]], 245, 310);
+        c.fillText(classes[tankorder[player.id][3]], 245, 310);
     }
     
     if(mouse.x > 10 && mouse.x < 160 && mouse.y > 10 && mouse.y < 160) {
