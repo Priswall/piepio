@@ -25,7 +25,7 @@ function Shape(x, y, id) {
                 break;
             case 2:                 //Pentagon
                 this.rotationSpeed = random(-1, 1) / 8;
-                this.size = 50;
+                this.size = 60;
                 this.health.x = 20;
                 this.health.y = this.health.x;
                 break;
@@ -142,7 +142,7 @@ function Shape(x, y, id) {
         c.save();
         c.translate(this.pos.x - (this.size / 2), this.pos.y - (this.size / 2));
         c.rotate(this.rotation * (Math.PI / 180));
-        c.drawImage(this.tempCanvas, 0, 0);
+        c.drawImage(this.tempCanvas, this.size / 2, this.size / 2);
         c.restore();
     };
 }
