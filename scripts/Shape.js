@@ -92,7 +92,6 @@ function Shape(x, y, id) {
                 tempC.strokeStyle = colors.strokeyellow;
                 tempC.save();
                 tempC.translate(15, 15);
-                tempC.rotate(this.rotation * (Math.PI / 180));
                 tempC.fillRect(-15, -15, 30, 30);
                 tempC.strokeRect(-15, -15, 30, 30);
                 tempC.restore();
@@ -102,7 +101,6 @@ function Shape(x, y, id) {
                 tempC.strokeStyle = colors.strokered;
                 tempC.save();
                 tempC.translate(20, 17.35);
-                tempC.rotate(this.rotation * (Math.PI / 180));
                 tempC.beginPath();
                 tempC.moveTo(0, 17.35);
                 tempC.lineTo(-20, -17.35);
@@ -117,7 +115,6 @@ function Shape(x, y, id) {
                 tempC.strokeStyle = colors.strokepurple;
                 tempC.save();
                 tempC.translate(28.5, 24.3);
-                tempC.rotate(this.rotation * (Math.PI / 180));
                 tempC.beginPath();
                 tempC.moveTo(-28.5, 9.3);
                 tempC.lineTo(0, 30);
@@ -140,7 +137,11 @@ function Shape(x, y, id) {
 //             tempC.lineWidth = 3;
 //         }
         //Draw temporary canvas onto original canvas
-        c.drawImage(tempCanvas, this.pos.x, this.pos.y);
+        c.save();
+        c.translate(this.pos.x - (this.size / 2), this.pos.y - (this.size / 2));
+        c.rotate(this.rotation * (Math.PI / 180));
+        c.drawImage(tempCanvas, 0, 0);
+        c.restore();
     };
 }
 
