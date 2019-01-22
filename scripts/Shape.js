@@ -9,34 +9,34 @@ function Shape(x, y, id) {
     this.vel = new Vector(random(-1, 1) / 10, random(-1, 1) / 10);
     this.pushVel = new Vector(0, 0);
     this.rotationSpeed = 0;
+    do {
+        switch(this.id) {
+            case 0:                 //Square
+                this.rotationSpeed = random(-1, 1) / 2;
+                this.size = 30;
+                this.health.x = 5;
+                this.health.y = this.health.x;
+                break;
+            case 1:                 //Triangle
+                this.rotationSpeed = random(-1, 1) / 4;
+                this.size = 40;
+                this.health.x = 10;
+                this.health.y = this.health.x;
+                break;
+            case 2:                 //Pentagon
+                this.rotationSpeed = random(-1, 1) / 8;
+                this.size = 50;
+                this.health.x = 20;
+                this.health.y = this.health.x;
+                break;
+        }
+    } while(Math.abs(this.rotationSpeed) < 0.05);
     //Create new canvas so transparency doesn't look weird
     this.tempCanvas = document.createElement("canvas");
     this.tempCanvas.width = this.size + 2;
     this.tempCanvas.height = this.size + 2;
     
     this.update = function() {
-        if(Math.abs(this.rotationSpeed) < 0.05) {
-            switch(this.id) {
-                case 0:                 //Square
-                    this.rotationSpeed = random(-1, 1) / 2;
-                    this.size = 30;
-                    this.health.x = 5;
-                    this.health.y = this.health.x;
-                    break;
-                case 1:                 //Triangle
-                    this.rotationSpeed = random(-1, 1) / 4;
-                    this.size = 40;
-                    this.health.x = 10;
-                    this.health.y = this.health.x;
-                    break;
-                case 2:                 //Pentagon
-                    this.rotationSpeed = random(-1, 1) / 8;
-                    this.size = 50;
-                    this.health.x = 20;
-                    this.health.y = this.health.x;
-                    break;
-            }
-        }
         this.rotation += this.rotationSpeed;
         this.pos.x += this.vel.x;
         this.pos.y += this.vel.y;
