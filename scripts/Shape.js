@@ -57,13 +57,19 @@ function Shape(x, y, id) {
 
     this.gotHit = function(other) {
         if(other instanceof Tank) {
-            this.pushVel.x = -Math.atan2(other.pos.x - this.pos.x, other.pos.y - this.pos.y);
-            this.pushVel.y = -Math.atan2(other.pos.y - this.pos.y, other.pos.x - this.pos.x);
-            other.pos.x += Math.atan2(other.pos.x - this.pos.x, other.pos.y - this.pos.y) * 0.5;
-            other.pos.y += Math.atan2(other.pos.y - this.pos.y, other.pos.x - this.pos.x) * 0.5;
+            var dx = this.pos.x - other.pos.x;
+            var dy = this.pos.y - other.pos.y;
+            var mag = (dx * dx + dy * dy);
+            this.pushVel.x = (dx / mag) * 2;
+            this.pushVel.y = (dy / mag) * 2;
+            other.pos.x -= (dx / mag) * 0.5;
+            other.pos.y -= (dy / mag) * 0.5;
         } else if(other instanceof Shape) {
-            this.pushVel.x = -Math.atan2(other.pos.x - this.pos.x, other.pos.y - this.pos.y) / 3;
-            this.pushVel.y = -Math.atan2(other.pos.y - this.pos.y, other.pos.x - this.pos.x) / 3;
+            var dx = this.pos.x - other.pos.x;
+            var dy = this.pos.y - other.pos.y;
+            var mag = (dx * dx + dy * dy);
+            this.pushVel.x = (dx / mag) * 5;
+            this.pushVel.y = (dy / mag) * 5;
             this.vel.x += this.pushVel.x / 10;
             this.vel.y += this.pushVel.y / 10;
         } else if(other instanceof Bullet) {
