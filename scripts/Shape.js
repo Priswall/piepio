@@ -101,7 +101,7 @@ function Shape(x, y, id) {
                 tempC.fillStyle = colors.lightred;
                 tempC.strokeStyle = colors.strokered;
                 tempC.save();
-                tempC.translate(this.pos.x, this.pos.y);
+                tempC.translate(this.pos.x + 20, this.pos.y + 17.35);
                 tempC.rotate(this.rotation * (Math.PI / 180));
                 tempC.beginPath();
                 tempC.moveTo(0, 17.35);
@@ -116,7 +116,7 @@ function Shape(x, y, id) {
                 tempC.fillStyle = colors.lightpurple;
                 tempC.strokeStyle = colors.strokepurple;
                 tempC.save();
-                tempC.translate(this.pos.x, this.pos.y);
+                tempC.translate(this.pos.x + 28.5, this.pos.y + 24.3);
                 tempC.rotate(this.rotation * (Math.PI / 180));
                 tempC.beginPath();
                 tempC.moveTo(-28.5, 9.3);
@@ -131,14 +131,14 @@ function Shape(x, y, id) {
                 break;
         }
         //Display the health if it was hit
-        if(this.health.x != this.health.y) {
-            tempC.strokeStyle = "rgba(0, 0, 0, 0.8)";
-            tempC.lineWidth = 5;
-            line(this.pos.x - (this.size / 2), this.pos.y + (this.size / 2) + 10, this.pos.x + (this.size / 2), this.pos.y + (this.size / 2) + 10);
-            tempC.strokeStyle = colors.lightgreen;
-            line(this.pos.x - (this.size / 2), this.pos.y + (this.size / 2) + 10, (this.pos.x - (this.size / 2)) + ((this.size / this.health.x) * this.health.y), this.pos.y + (this.size / 2) + 10);
-            tempC.lineWidth = 3;
-        }
+//         if(this.health.x != this.health.y) {
+//             tempC.strokeStyle = "rgba(0, 0, 0, 0.8)";
+//             tempC.lineWidth = 5;
+//             line(this.pos.x - (this.size / 2), this.pos.y + (this.size / 2) + 10, this.pos.x + (this.size / 2), this.pos.y + (this.size / 2) + 10);
+//             tempC.strokeStyle = colors.lightgreen;
+//             line(this.pos.x - (this.size / 2), this.pos.y + (this.size / 2) + 10, (this.pos.x - (this.size / 2)) + ((this.size / this.health.x) * this.health.y), this.pos.y + (this.size / 2) + 10);
+//             tempC.lineWidth = 3;
+//         }
         //Draw temporary canvas onto original canvas
         c.drawImage(tempCanvas, this.pos.x, this.pos.y);
     };
