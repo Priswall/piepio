@@ -60,10 +60,10 @@ function Shape(x, y, id) {
             var dx = this.pos.x - other.pos.x;
             var dy = this.pos.y - other.pos.y;
             var mag = (dx * dx + dy * dy);
-            this.pushVel.x = (dx / mag) * 2;
-            this.pushVel.y = (dy / mag) * 2;
-            other.pos.x -= (dx / mag) * 0.5;
-            other.pos.y -= (dy / mag) * 0.5;
+            this.pushVel.x = (dx / mag) * 10;
+            this.pushVel.y = (dy / mag) * 10;
+            other.pos.x -= (dx / mag) * 5;
+            other.pos.y -= (dy / mag) * 5;
         } else if(other instanceof Shape) {
             var dx = this.pos.x - other.pos.x;
             var dy = this.pos.y - other.pos.y;
