@@ -82,16 +82,16 @@ function Shape(x, y, id) {
     this.draw = function() {
         //Create new canvas so transparency doesn't look weird
         var tempCanvas = document.createElement("canvas");
-        tempCanvas.width = 100;
-        tempCanvas.height = 100;
         var tempC = tempCanvas.getContext("2d");
+        tempCanvas.width = this.size + 2;
+        tempCanvas.height = this.size + 2;
         tempC.lineWidth = 3;
         switch(this.id) {
             case 0:                 //Square
                 tempC.fillStyle = colors.lightyellow;
                 tempC.strokeStyle = colors.strokeyellow;
                 tempC.save();
-                tempC.translate(15, 15);
+                tempC.translate(16, 16);
                 tempC.fillRect(-15, -15, 30, 30);
                 tempC.strokeRect(-15, -15, 30, 30);
                 tempC.restore();
@@ -100,7 +100,7 @@ function Shape(x, y, id) {
                 tempC.fillStyle = colors.lightred;
                 tempC.strokeStyle = colors.strokered;
                 tempC.save();
-                tempC.translate(20, 17.35);
+                tempC.translate(21, 18.35);
                 tempC.beginPath();
                 tempC.moveTo(0, 17.35);
                 tempC.lineTo(-20, -17.35);
@@ -114,7 +114,7 @@ function Shape(x, y, id) {
                 tempC.fillStyle = colors.lightpurple;
                 tempC.strokeStyle = colors.strokepurple;
                 tempC.save();
-                tempC.translate(28.5, 24.3);
+                tempC.translate(29.5, 25.3);
                 tempC.beginPath();
                 tempC.moveTo(-28.5, 9.3);
                 tempC.lineTo(0, 30);
@@ -127,15 +127,15 @@ function Shape(x, y, id) {
                 tempC.restore();
                 break;
         }
-        //Display the health if it was hit
-//         if(this.health.x != this.health.y) {
-//             tempC.strokeStyle = "rgba(0, 0, 0, 0.8)";
-//             tempC.lineWidth = 5;
-//             line(this.pos.x - (this.size / 2), this.pos.y + (this.size / 2) + 10, this.pos.x + (this.size / 2), this.pos.y + (this.size / 2) + 10);
-//             tempC.strokeStyle = colors.lightgreen;
-//             line(this.pos.x - (this.size / 2), this.pos.y + (this.size / 2) + 10, (this.pos.x - (this.size / 2)) + ((this.size / this.health.x) * this.health.y), this.pos.y + (this.size / 2) + 10);
-//             tempC.lineWidth = 3;
-//         }
+        Display the health if it was hit
+        if(this.health.x != this.health.y) {
+            c.strokeStyle = "rgba(0, 0, 0, 0.8)";
+            c.lineWidth = 5;
+            line(this.pos.x - (this.size / 2), this.pos.y + (this.size / 2) + 10, this.pos.x + (this.size / 2), this.pos.y + (this.size / 2) + 10);
+            c.strokeStyle = colors.lightgreen;
+            line(this.pos.x - (this.size / 2), this.pos.y + (this.size / 2) + 10, (this.pos.x - (this.size / 2)) + ((this.size / this.health.x) * this.health.y), this.pos.y + (this.size / 2) + 10);
+            c.lineWidth = 3;
+        }
         //Draw temporary canvas onto original canvas
         c.save();
         c.translate(this.pos.x - (this.size / 2), this.pos.y - (this.size / 2));
