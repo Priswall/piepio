@@ -65,11 +65,11 @@ function Shape(x, y, id) {
             var dx = this.pos.x - other.pos.x;
             var dy = this.pos.y - other.pos.y;
             var mag = (dx * dx + dy * dy);
-            this.pushVel.x = (dx / mag) * 75;
-            this.pushVel.y = (dy / mag) * 75;
+            this.pushVel.x = (dx / mag) * 50;
+            this.pushVel.y = (dy / mag) * 50;
             if(other.cooldown >= other.reload){
-                other.pos.x += (dx / mag) * 75;
-                other.pos.y += (dy / mag) * 75;
+                other.pos.x += (dx / mag) * 50;
+                other.pos.y += (dy / mag) * 50;
                 this.health.y -= other.damage;
                 other.cooldown = 0;
                 other. timestamp = time.getTime();
