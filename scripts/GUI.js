@@ -24,6 +24,7 @@ function upgradeTankMenu() {
     c.restore();
     c.fillStyle = "white";
     c.strokeStyle = "rgba(100, 100, 100, 0.5)";
+    c.strokeText(classes[tankorder[player.id][0]], 85, 135);
     c.fillText(classes[tankorder[player.id][0]], 85, 135);
     if(tankorder[player.id].length > 1) {
         c.strokeStyle = colors.strokegray;
@@ -48,6 +49,7 @@ function upgradeTankMenu() {
         c.restore();
         c.fillStyle = "white";
         c.strokeStyle = "rgba(100, 100, 100, 0.5)";
+        c.strokeText(classes[tankorder[player.id][1]], 245, 135);
         c.fillText(classes[tankorder[player.id][1]], 245, 135);
     }
     if(tankorder[player.id].length > 2) {
@@ -73,6 +75,7 @@ function upgradeTankMenu() {
         c.restore();
         c.fillStyle = "white";
         c.strokeStyle = "rgba(100, 100, 100, 0.5)";
+        c.strokeText(classes[tankorder[player.id][2]], 85, 300);
         c.fillText(classes[tankorder[player.id][2]], 85, 300);
     }
     if(tankorder[player.id].length > 3) {
@@ -98,6 +101,7 @@ function upgradeTankMenu() {
         c.restore();
         c.fillStyle = "white";
         c.strokeStyle = "rgba(100, 100, 100, 0.5)";
+        c.strokeText(classes[tankorder[player.id][3]], 245, 300);
         c.fillText(classes[tankorder[player.id][3]], 245, 300);
     }
     
