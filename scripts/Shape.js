@@ -33,8 +33,8 @@ function Shape(x, y, id) {
     } while(Math.abs(this.rotationSpeed) < 0.05);
     //Create new canvas so transparency doesn't look weird
     this.tempCanvas = document.createElement("canvas");
-    this.tempCanvas.width = this.size + 2;
-    this.tempCanvas.height = this.size + 2;
+    this.tempCanvas.width = this.size + 3;
+    this.tempCanvas.height = this.size + 3;
     
     this.update = function() {
         this.rotation += this.rotationSpeed;
@@ -143,7 +143,7 @@ function Shape(x, y, id) {
         c.save();
         c.translate(this.pos.x + (this.size / 2), this.pos.y + (this.size / 2));
         c.rotate(this.rotation * (Math.PI / 180));
-        c.drawImage(this.tempCanvas, -this.size, -this.size);
+        c.drawImage(this.tempCanvas, 0, 0);
         c.restore();
     };
 }
