@@ -1,6 +1,7 @@
 function upgradeTankMenu() {
     c.textAlign = "center";
-    c.font = "25px Ubuntu";
+    c.font = "15px Ubuntu";
+    c.lineWidth = 3;
     c.strokeStyle = colors.strokegray;
     c.fillStyle = "rgb(255, 100, 100)";
     c.fillRect(10, 10, 150, 150);
@@ -25,6 +26,7 @@ function upgradeTankMenu() {
     c.strokeStyle = "rgba(100, 100, 100, 0.5)";
     c.fillText(classes[tankorder[player.id][0]], 85, 135);
     if(tankorder[player.id].length > 1) {
+        c.strokeStyle = colors.strokegray;
         c.fillStyle = "rgb(255, 255, 100)";
         c.fillRect(170, 10, 150, 150);
         c.fillStyle = "rgb(200, 200, 100)";
@@ -49,6 +51,7 @@ function upgradeTankMenu() {
         c.fillText(classes[tankorder[player.id][1]], 245, 135);
     }
     if(tankorder[player.id].length > 2) {
+        c.strokeStyle = colors.strokegray;
         c.fillStyle = "rgb(100, 255, 100)";
         c.fillRect(10, 170, 150, 150);
         c.fillStyle = "rgb(100, 200, 100)";
@@ -73,6 +76,7 @@ function upgradeTankMenu() {
         c.fillText(classes[tankorder[player.id][2]], 85, 300);
     }
     if(tankorder[player.id].length > 3) {
+        c.strokeStyle = colors.strokegray;
         c.fillStyle = "rgb(100, 255, 255)";
         c.fillRect(170, 170, 150, 150);
         c.fillStyle = "rgb(100, 200, 200)";
