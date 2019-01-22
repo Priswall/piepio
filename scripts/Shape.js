@@ -127,7 +127,7 @@ function Shape(x, y, id) {
                 tempC.restore();
                 break;
         }
-        Display the health if it was hit
+        //Display the health if it was hit
         if(this.health.x != this.health.y) {
             c.strokeStyle = "rgba(0, 0, 0, 0.8)";
             c.lineWidth = 5;
