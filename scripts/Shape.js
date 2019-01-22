@@ -141,7 +141,7 @@ function Shape(x, y, id) {
         }
         //Draw temporary canvas onto original canvas
         c.save();
-        c.translate(this.pos.x + (this.size / 2), this.pos.y + (this.size / 2));
+        c.translate(this.pos.x, this.pos.y);
         c.rotate(this.rotation * (Math.PI / 180));
         c.drawImage(this.tempCanvas, 0, 0);
         c.restore();
