@@ -82,6 +82,8 @@ function Shape(x, y, id) {
     this.draw = function() {
         //Create new canvas so transparency doesn't look weird
         var tempCanvas = document.createElement("canvas");
+        tempCanvas.width = 100;
+        tempCanvas.height = 100;
         var tempC = tempCanvas.getContext("2d");
         switch(this.id) {
             case 0:                 //Square
@@ -90,7 +92,8 @@ function Shape(x, y, id) {
                 tempC.save();
                 tempC.translate(this.pos.x, this.pos.y);
                 tempC.rotate(this.rotation * (Math.PI / 180));
-                rect(-15, -15, 30, 30);
+                tempC.fillRect(-15, -15, 30, 30);
+                tempC.strokeRect(-15, -15, 30, 30);
                 tempC.restore();
                 break;
             case 1:                 //Triangle
