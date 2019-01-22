@@ -85,6 +85,7 @@ function Shape(x, y, id) {
         tempCanvas.width = 100;
         tempCanvas.height = 100;
         var tempC = tempCanvas.getContext("2d");
+        tempC.lineWidth = 3;
         switch(this.id) {
             case 0:                 //Square
                 tempC.fillStyle = colors.lightyellow;
@@ -139,7 +140,7 @@ function Shape(x, y, id) {
             tempC.lineWidth = 3;
         }
         //Draw temporary canvas onto original canvas
-        c.drawImage(tempCanvas, 0, 0);
+        c.drawImage(tempCanvas, this.pos.x, this.pos.y);
     };
 }
 
