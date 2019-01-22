@@ -1,4 +1,5 @@
 function upgradeTankMenu() {
+    c.textAlign = "center";
     c.strokeStyle = colors.strokegray;
     c.fillStyle = "rgb(255, 100, 100)";
     c.fillRect(10, 10, 150, 150);
@@ -19,6 +20,9 @@ function upgradeTankMenu() {
     c.fill();
     c.stroke();
     c.restore();
+    c.fillStyle = "white";
+    c.strokeStyle = "rgba(100, 100, 100, 0.5)";
+    c.fillText(classes[tankorder[player.id][0]], 85, 65);
     if(tankorder[player.id].length > 1) {
         c.fillStyle = "rgb(255, 255, 100)";
         c.fillRect(170, 10, 150, 150);
@@ -39,6 +43,9 @@ function upgradeTankMenu() {
         c.fill();
         c.stroke();
         c.restore();
+        c.fillStyle = "white";
+        c.strokeStyle = "rgba(100, 100, 100, 0.5)";
+        c.fillText(classes[tankorder[player.id][1]], 245, 65);
     }
     if(tankorder[player.id].length > 2) {
         c.fillStyle = "rgb(100, 255, 100)";
@@ -60,6 +67,9 @@ function upgradeTankMenu() {
         c.fill();
         c.stroke();
         c.restore();
+        c.fillStyle = "white";
+        c.strokeStyle = "rgba(100, 100, 100, 0.5)";
+        c.fillText(classes[tankorder[player.id][2]], 85, 225);
     }
     if(tankorder[player.id].length > 3) {
         c.fillStyle = "rgb(100, 255, 255)";
@@ -81,6 +91,9 @@ function upgradeTankMenu() {
         c.fill();
         c.stroke();
         c.restore();
+        c.fillStyle = "white";
+        c.strokeStyle = "rgba(100, 100, 100, 0.5)";
+        c.fillText(classes[tankorder[player.id][3]], 245, 225);
     }
     
     if(mouse.x > 10 && mouse.x < 160 && mouse.y > 10 && mouse.y < 160) {
