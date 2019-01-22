@@ -82,9 +82,9 @@ function Shape(x, y, id) {
     this.draw = function() {
         //Create new canvas so transparency doesn't look weird
         var tempCanvas = document.createElement("canvas");
+        this.tempCanvas.width = this.size + 2;
+        this.tempCanvas.height = this.size + 2;
         var tempC = tempCanvas.getContext("2d");
-        tempCanvas.width = this.size + 2;
-        tempCanvas.height = this.size + 2;
         tempC.lineWidth = 3;
         switch(this.id) {
             case 0:                 //Square
