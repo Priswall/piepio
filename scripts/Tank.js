@@ -158,9 +158,11 @@ function Tank(x, y, rotation, team, id) {
     this.reevaluateStats = function() {
         //Update barrels and stats when the tank class is changed
         this.class = classes[this.id];
-        this.reload = new Vector(tankstats[this.class].reload, tankstats[this.class].reload);
-        this.bulletSpeed = new Vector(tankstats[this.class].bulletSpeed, tankstats[this.class].bulletSpeed);
-        this.spread = new Vector(tankstats[this.class].spread, tankstats[this.class].spread);
+        if(tankstats[this.class] !== undefined) {
+            this.reload = new Vector(tankstats[this.class].reload, tankstats[this.class].reload);
+            this.bulletSpeed = new Vector(tankstats[this.class].bulletSpeed, tankstats[this.class].bulletSpeed);
+            this.spread = new Vector(tankstats[this.class].spread, tankstats[this.class].spread);
+        }
 
         switch(this.id) {
             case classes.indexOf("Twin"):
