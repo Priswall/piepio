@@ -35,25 +35,27 @@ function draw() {
     for(var i = 0; i < shapes.length;) {
         shapes[i].draw();
         shapes[i].update();
-        if(Math.abs(shapes[i].pos.x - player.pos.x) < (shapes[i].size / 2) + 17.5 &&
-           Math.abs(shapes[i].pos.y - player.pos.y) < (shapes[i].size / 2) + 17.5)
-            shapes[i].gotHit(player);
-        for(var j = 0; j < bullets.length; j++) {
-            if(Math.abs(shapes[i].pos.x - bullets[j].pos.x) < (shapes[i].size / 2) + 8 &&
-               Math.abs(shapes[i].pos.y - bullets[j].pos.y) < (shapes[i].size / 2) + 8)
-                shapes[i].gotHit(bullets[j]);
-        }
-        for(var j = 0; j < shapes.length; j++) {
-            if(i !== j) {
-                if(Math.abs(shapes[i].pos.x - shapes[j].pos.x) < (shapes[i].size / 2) + (shapes[j].size / 2) &&
-                   Math.abs(shapes[i].pos.y - shapes[j].pos.y) < (shapes[i].size / 2) + (shapes[j].size / 2)) {
-                    shapes[i].gotHit(shapes[j]);
-                    shapes[j].gotHit(shapes[i]);
+        if(shapes[i].health.y > 0) {
+            if(Math.abs(shapes[i].pos.x - player.pos.x) < (shapes[i].size / 2) + 17.5 &&
+               Math.abs(shapes[i].pos.y - player.pos.y) < (shapes[i].size / 2) + 17.5)
+                shapes[i].gotHit(player);
+            for(var j = 0; j < bullets.length; j++) {
+                if(Math.abs(shapes[i].pos.x - bullets[j].pos.x) < (shapes[i].size / 2) + 8 &&
+                   Math.abs(shapes[i].pos.y - bullets[j].pos.y) < (shapes[i].size / 2) + 8)
+                    shapes[i].gotHit(bullets[j]);
+            }
+            for(var j = 0; j < shapes.length; j++) {
+                if(i !== j) {
+                    if(Math.abs(shapes[i].pos.x - shapes[j].pos.x) < (shapes[i].size / 2) + (shapes[j].size / 2) &&
+                       Math.abs(shapes[i].pos.y - shapes[j].pos.y) < (shapes[i].size / 2) + (shapes[j].size / 2)) {
+                        shapes[i].gotHit(shapes[j]);
+                        shapes[j].gotHit(shapes[i]);
+                    }
                 }
             }
         }
-        //Kill the shapes if it's health is less than or equal to 0
-        if(shapes[i].health.y <= 0)
+        //Kill the shapes if it's death animation is over
+        if(shapes[i].alpha < 0)
             shapes.splice(i, 1);
         else i++;
     }
