@@ -88,7 +88,6 @@ function Tank(x, y, rotation, team, id) {
                                 break;
                         }
                         break;
-
                     case classes.indexOf("Flank Guard"):
                         bullets.push(new Bullet(
                             this.pos.x + Math.sin(this.rotation) * 40,
@@ -117,10 +116,10 @@ function Tank(x, y, rotation, team, id) {
                                     (this.pos.y - Math.cos(this.rotation - (-8.5 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
                                     0, this));
                                 bullets.push(new Bullet(
-                                    this.pos.x + Math.sin(this.rotation + (165 * (Math.PI / 180))) * 40,
-                                    this.pos.y - Math.cos(this.rotation + (165 * (Math.PI / 180))) * 40,
-                                    (this.pos.x + Math.sin(this.rotation + (172.5 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
-                                    (this.pos.y - Math.cos(this.rotation + (172.5 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                    this.pos.x + Math.sin(this.rotation + (-165 * (Math.PI / 180))) * 40,
+                                    this.pos.y - Math.cos(this.rotation + (-165 * (Math.PI / 180))) * 40,
+                                    (this.pos.x + Math.sin(this.rotation + (-172.5 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                    (this.pos.y - Math.cos(this.rotation + (-172.5 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
                                     0, this));
                                 this.barrels[0].cooldown = 0;
                                 this.barrels[2].cooldown = 0;
@@ -134,10 +133,10 @@ function Tank(x, y, rotation, team, id) {
                                     (this.pos.y - Math.cos(this.rotation - (8.5 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
                                     0, this));
                                 bullets.push(new Bullet(
-                                    this.pos.x + Math.sin(this.rotation + (-165 * (Math.PI / 180))) * 40,
-                                    this.pos.y - Math.cos(this.rotation + (-165 * (Math.PI / 180))) * 40,
-                                    (this.pos.x + Math.sin(this.rotation + (-172.5 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
-                                    (this.pos.y - Math.cos(this.rotation + (-172.5 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                    this.pos.x + Math.sin(this.rotation + (165 * (Math.PI / 180))) * 40,
+                                    this.pos.y - Math.cos(this.rotation + (165 * (Math.PI / 180))) * 40,
+                                    (this.pos.x + Math.sin(this.rotation + (172.5 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                    (this.pos.y - Math.cos(this.rotation + (172.5 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
                                     0, this));
                                 this.barrels[1].cooldown = 0;
                                 this.barrels[3].cooldown = 0;
