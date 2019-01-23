@@ -17,7 +17,7 @@ function Shape(x, y, id) {
             case 0:                 //Square
                 this.rotationSpeed = random(-1, 1) / 2;
                 this.size = 30;
-                this.health.x = 1;
+                this.health.x = 1.5;
                 this.health.y = this.health.x;
                 break;
             case 1:                 //Triangle
