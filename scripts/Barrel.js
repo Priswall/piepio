@@ -13,7 +13,7 @@ function Barrel(offsetX, offsetY, id, w, h, r) {
 
         c.save();
         c.translate(this.offset.x, this.offset.y);
-        c.rotate(this.r * (Math.PI / 180));
+        c.rotate(this.rotation * (Math.PI / 180));
         switch(this.id) {
             case 0:                 //Normal rectangular barrel
                 rect(-this.w / 2, 0, this.w, (this.h * 0.8) + ((this.h * 0.2) * Math.abs(Math.sin((this.cooldown / 50) - 0.5))));
