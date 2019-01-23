@@ -123,7 +123,7 @@ function Tank(x, y, rotation, team, id) {
                                     (this.pos.y - Math.cos(this.rotation + (172.5 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
                                     0, this));
                                 this.barrels[0].cooldown = 0;
-                                this.barrels[3].cooldown = 0;
+                                this.barrels[2].cooldown = 0;
                                 this.barrel = 1;
                                 break;
                             case 1:
@@ -140,7 +140,7 @@ function Tank(x, y, rotation, team, id) {
                                     (this.pos.y - Math.cos(this.rotation + (-172.5 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
                                     0, this));
                                 this.barrels[1].cooldown = 0;
-                                this.barrels[2].cooldown = 0;
+                                this.barrels[3].cooldown = 0;
                                 this.barrel = 0;
                                 break;
                         }
