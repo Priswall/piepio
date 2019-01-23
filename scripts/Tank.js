@@ -15,7 +15,7 @@ var classes = [
     "Trapper",
     "Destroyer",
     "Gunner",
-    "Tri-angle",
+    "Tri-Angle",
     "Auto 3"
 ];
 
@@ -183,6 +183,78 @@ function Tank(x, y, rotation, team, id) {
                 this.barrels = [
                     new Barrel(0, 0, 0, 20, 50, 0),
                     new Barrel(0, 0, 0, 20, 40, 180)
+                ];
+                break;
+            case classes.indexOf("Triple Shot"):
+                this.barrels = [
+                    new Barrel(0, 0, 0, 20, 50, 0),
+                    new Barrel(0, 0, 0, 20, 50, 45),
+                    new Barrel(0, 0, 0, 20, 50, -45),
+                ];
+                break;
+            case classes.indexOf("Quad Tank"):
+                this.barrels = [
+                    new Barrel(0, 0, 0, 20, 50, 0),
+                    new Barrel(0, 0, 0, 20, 50, 90),
+                    new Barrel(0, 0, 0, 20, 50, 180),
+                    new Barrel(0, 0, 0, 20, 50, -90),
+                ];
+                break;
+            case classes.indexOf("Twin Flank"):
+                this.barrels = [
+                    new Barrel(-11, 0, 0, 20, 50, 0),
+                    new Barrel(11, 0, 0, 20, 50, 0),
+                    new Barrel(11, 0, 0, 20, 40, 180),
+                    new Barrel(-11, 0, 0, 20, 40, 180)
+                ];
+                break;
+            case classes.indexOf("Assassin"):
+                this.barrels = [
+                    new Barrel(0, 0, 0, 20, 70, 0)
+                ];
+                break;
+            case classes.indexOf("Overseer"):
+                this.barrels = [
+                    new Barrel(0, 0, 1, 40, 35, 0),
+                    new Barrel(0, 0, 1, 40, 35, 180)
+                ];
+                break;
+            case classes.indexOf("Huner"):
+                this.barrels = [
+                    new Barrel(0, 0, 0, 20, 70, 0),
+                    new Barrel(0, 0, 0, 35, 60, 0)
+                ];
+                break;
+            case classes.indexOf("Trapper"):
+                this.barrels = [
+                    new Barrel(0, 0, 2, 20, 50, 0)
+                ];
+                break;
+            case classes.indexOf("Destroyer"):
+                this.barrels = [
+                    new Barrel(0, 0, 0, 40, 60, 0)
+                ];
+                break;
+            case classes.indexOf("Gunner"):
+                this.barrels = [
+                    new Barrel(-25, 0, 0, 15, 45, 0),
+                    new Barrel(25, 0, 0, 15, 45, 0),
+                    new Barrel(-15, 0, 0, 15, 50, 0),
+                    new Barrel(15, 0, 0, 15, 50, 0)
+                ];
+                break;
+            case classes.indexOf("Tri-Angle"):
+                this.barrels = [
+                    new Barrel(0, 0, 0, 20, 50, 0),
+                    new Barrel(0, 0, 0, 20, 40, 135),
+                    new Barrel(0, 0, 0, 20, 40, -135),
+                ];
+                break;
+            case classes.indexOf("Auto 3"):
+                this.barrels = [
+                    new Barrel(0, 0, 3, 20, 50, 0),
+                    new Barrel(0, 0, 3, 20, 50, 120),
+                    new Barrel(0, 0, 3, 20, 50, 240),
                 ];
                 break;
         }
