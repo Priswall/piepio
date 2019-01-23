@@ -5,7 +5,18 @@ var classes = [
     "Twin",
     "Sniper",
     "Machine Gunner",
-    "Flank Guard"
+    "Flank Guard",
+    "Triple Shot",
+    "Quad Tank",
+    "Twin Flank",
+    "Assassin",
+    "Overseer",
+    "Hunter",
+    "Trapper",
+    "Destroyer",
+    "Gunner",
+    "Tri-angle",
+    "Auto 3"
 ];
 
 function Tank(x, y, rotation, team, id) {
