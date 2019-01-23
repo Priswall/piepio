@@ -165,7 +165,7 @@ function Tank(x, y, rotation, team, id) {
                 break;
             case classes.indexOf("Machine Gunner"):
                 this.barrels = [
-                    new Barrel(0, 0, 1, 50, 40, 0)
+                    new Barrel(0, 0, 1, 30, 40, 0)
                 ];
                 break;
             case classes.indexOf("Flank Guard"):
