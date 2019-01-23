@@ -157,7 +157,7 @@ function Shape(x, y, id) {
         c.translate(this.pos.x, this.pos.y);
         c.scale(2 - (this.alpha / 100), 2 - (this.alpha / 100));
         c.rotate(this.rotation * (Math.PI / 180));
-        c.globalAlpha = this.alpha * 2.55;
+        c.globalAlpha = this.alpha / 100;
         c.drawImage(this.tempCanvas, -this.size / 2, -this.size / 2);
         c.restore();
     };
