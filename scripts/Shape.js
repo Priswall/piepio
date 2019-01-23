@@ -42,7 +42,6 @@ function Shape(x, y, id) {
     this.update = function() {
         if(this.health.y <= 0) this.alpha -= 5;
         else {
-            this.rotation += this.rotationSpeed;
             this.pos.x += this.vel.x;
             this.pos.y += this.vel.y;
             this.pos.x += this.pushVel.x;
@@ -59,6 +58,7 @@ function Shape(x, y, id) {
             this.vel.x = constrain(this.vel.x, -0.5, 0.5);
             this.vel.y = constrain(this.vel.y, -0.5, 0.5);
         }
+        this.rotation += this.rotationSpeed;
     };
 
     this.gotHit = function(other) {
@@ -143,7 +143,7 @@ function Shape(x, y, id) {
                 break;
         }
         //Display the health if it was hit
-        if(this.health.x != this.health.y) {
+        if(this.health.x != this.health.y && this.health.y > 0) {
             c.strokeStyle = "rgba(0, 0, 0, 0.5)";
             c.lineWidth = 7;
             line(this.pos.x - (this.size / 2), this.pos.y + (this.size / 2) + 10, this.pos.x + (this.size / 2), this.pos.y + (this.size / 2) + 10);
