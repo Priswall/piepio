@@ -14,7 +14,7 @@ function upgradeTankMenu() {
     c.save();
     c.translate(85, 65);
     c.rotate((frames / 100) % 360);
-    tankshow[tankorder[player.id][0]]();
+    //tankshow[tankorder[player.id][0]]();
     c.fillStyle = colors.lightblue;
     c.strokeStyle = colors.strokeblue;
     c.beginPath();
@@ -39,7 +39,7 @@ function upgradeTankMenu() {
         c.save();
         c.translate(245, 65);
         c.rotate((frames / 100) % 360);
-        tankshow[tankorder[player.id][1]]();
+        //tankshow[tankorder[player.id][1]]();
         c.fillStyle = colors.lightblue;
         c.strokeStyle = colors.strokeblue;
         c.beginPath();
@@ -65,7 +65,7 @@ function upgradeTankMenu() {
         c.save();
         c.translate(85, 225);
         c.rotate((frames / 100) % 360);
-        tankshow[tankorder[player.id][2]]();
+        //tankshow[tankorder[player.id][2]]();
         c.fillStyle = colors.lightblue;
         c.strokeStyle = colors.strokeblue;
         c.beginPath();
@@ -91,7 +91,7 @@ function upgradeTankMenu() {
         c.save();
         c.translate(245, 225);
         c.rotate((frames / 100) % 360);
-        tankshow[tankorder[player.id][3]]();
+        //tankshow[tankorder[player.id][3]]();
         c.fillStyle = colors.lightblue;
         c.strokeStyle = colors.strokeblue;
         c.beginPath();
