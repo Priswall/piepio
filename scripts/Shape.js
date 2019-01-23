@@ -155,7 +155,7 @@ function Shape(x, y, id) {
         //Draw temporary canvas onto original canvas
         c.save();
         c.translate(this.pos.x, this.pos.y);
-        c.scale(1 + (this.alpha / 100), 1 + (this.alpha / 100));
+        c.scale(2 - (this.alpha / 100), 2 - (this.alpha / 100));
         c.rotate(this.rotation * (Math.PI / 180));
         c.globalAlpha = this.alpha * 2.55;
         c.drawImage(this.tempCanvas, -this.size / 2, -this.size / 2);
