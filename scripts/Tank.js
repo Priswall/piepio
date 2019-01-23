@@ -190,8 +190,8 @@ function Tank(x, y, rotation, team, id) {
             case classes.indexOf("Triple Shot"):
                 this.barrels = [
                     new Barrel(0, 0, 0, 20, 50, 0),
-                    new Barrel(0, 0, 0, 20, 50, 45),
-                    new Barrel(0, 0, 0, 20, 50, -45),
+                    new Barrel(0, 0, 0, 20, 50, 35),
+                    new Barrel(0, 0, 0, 20, 50, -35),
                 ];
                 break;
             case classes.indexOf("Quad Tank"):
@@ -206,8 +206,8 @@ function Tank(x, y, rotation, team, id) {
                 this.barrels = [
                     new Barrel(-11, 0, 0, 20, 50, 0),
                     new Barrel(11, 0, 0, 20, 50, 0),
-                    new Barrel(11, 0, 0, 20, 40, 180),
-                    new Barrel(-11, 0, 0, 20, 40, 180)
+                    new Barrel(11, 0, 0, 20, 50, 180),
+                    new Barrel(-11, 0, 0, 20, 50, 180)
                 ];
                 break;
             case classes.indexOf("Assassin"):
@@ -217,11 +217,11 @@ function Tank(x, y, rotation, team, id) {
                 break;
             case classes.indexOf("Overseer"):
                 this.barrels = [
-                    new Barrel(0, 0, 1, 40, 35, 0),
-                    new Barrel(0, 0, 1, 40, 35, 180)
+                    new Barrel(0, 0, 1, 40, 35, 90),
+                    new Barrel(0, 0, 1, 40, 35, -90)
                 ];
                 break;
-            case classes.indexOf("Huner"):
+            case classes.indexOf("Hunter"):
                 this.barrels = [
                     new Barrel(0, 0, 0, 20, 70, 0),
                     new Barrel(0, 0, 0, 35, 60, 0)
@@ -234,7 +234,7 @@ function Tank(x, y, rotation, team, id) {
                 break;
             case classes.indexOf("Destroyer"):
                 this.barrels = [
-                    new Barrel(0, 0, 0, 40, 60, 0)
+                    new Barrel(0, 0, 0, 40, 40, 0)
                 ];
                 break;
             case classes.indexOf("Gunner"):
@@ -248,8 +248,8 @@ function Tank(x, y, rotation, team, id) {
             case classes.indexOf("Tri-Angle"):
                 this.barrels = [
                     new Barrel(0, 0, 0, 20, 50, 0),
-                    new Barrel(0, 0, 0, 20, 40, 135),
-                    new Barrel(0, 0, 0, 20, 40, -135),
+                    new Barrel(0, 0, 0, 20, 40, 120),
+                    new Barrel(0, 0, 0, 20, 40, -120),
                 ];
                 break;
             case classes.indexOf("Auto 3"):
