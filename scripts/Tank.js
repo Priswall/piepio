@@ -52,6 +52,8 @@ function Tank(x, y, rotation, team, id) {
                     case classes.indexOf("Basic Tank"):
                     case classes.indexOf("Sniper"):
                     case classes.indexOf("Machine Gunner"):
+                    case classes.indexOf("Assassin"):
+                    case classes.indexOf("Destroyer"):
                         bullets.push(new Bullet(
                             this.pos.x + Math.sin(this.rotation) * 40,
                             this.pos.y - Math.cos(this.rotation) * 40,
