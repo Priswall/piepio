@@ -189,9 +189,9 @@ function Tank(x, y, rotation, team, id) {
                 break;
             case classes.indexOf("Triple Shot"):
                 this.barrels = [
-                    new Barrel(0, 0, 0, 20, 50, 0),
                     new Barrel(0, 0, 0, 20, 50, 35),
                     new Barrel(0, 0, 0, 20, 50, -35),
+                    new Barrel(0, 0, 0, 20, 50, 0)
                 ];
                 break;
             case classes.indexOf("Quad Tank"):
@@ -199,7 +199,7 @@ function Tank(x, y, rotation, team, id) {
                     new Barrel(0, 0, 0, 20, 50, 0),
                     new Barrel(0, 0, 0, 20, 50, 90),
                     new Barrel(0, 0, 0, 20, 50, 180),
-                    new Barrel(0, 0, 0, 20, 50, -90),
+                    new Barrel(0, 0, 0, 20, 50, -90)
                 ];
                 break;
             case classes.indexOf("Twin Flank"):
@@ -249,14 +249,14 @@ function Tank(x, y, rotation, team, id) {
                 this.barrels = [
                     new Barrel(0, 0, 0, 20, 50, 0),
                     new Barrel(0, 0, 0, 20, 40, 120),
-                    new Barrel(0, 0, 0, 20, 40, -120),
+                    new Barrel(0, 0, 0, 20, 40, -120)
                 ];
                 break;
             case classes.indexOf("Auto 3"):
                 this.barrels = [
                     new Barrel(0, 0, 3, 20, 50, 0),
                     new Barrel(0, 0, 3, 20, 50, 120),
-                    new Barrel(0, 0, 3, 20, 50, 240),
+                    new Barrel(0, 0, 3, 20, 50, 240)
                 ];
                 break;
         }
