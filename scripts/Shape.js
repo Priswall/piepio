@@ -3,24 +3,27 @@ function Shape(x, y, id) {
     this.health = new Vector(0, 0);
     this.rotation = 0;
     this.timestamp = 0;
+    this.isDead = false;
+    this.alpha = 100;
     this.id = id;
     this.reload = 1000 / 3;
     this.cooldown = this.reload;
     this.vel = new Vector(random(-1, 1) / 10, random(-1, 1) / 10);
     this.pushVel = new Vector(0, 0);
     this.rotationSpeed = 0;
+    //Make sure the rotation and velocity isn't too slow
     do {
         switch(this.id) {
             case 0:                 //Square
                 this.rotationSpeed = random(-1, 1) / 2;
                 this.size = 30;
-                this.health.x = 5;
+                this.health.x = 1;
                 this.health.y = this.health.x;
                 break;
             case 1:                 //Triangle
                 this.rotationSpeed = random(-1, 1) / 4;
                 this.size = 40;
-                this.health.x = 10;
+                this.health.x = 5;
                 this.health.y = this.health.x;
                 break;
             case 2:                 //Pentagon
@@ -37,22 +40,25 @@ function Shape(x, y, id) {
     this.tempCanvas.height = this.size + 3;
     
     this.update = function() {
-        this.rotation += this.rotationSpeed;
-        this.pos.x += this.vel.x;
-        this.pos.y += this.vel.y;
-        this.pos.x += this.pushVel.x;
-        this.pos.y += this.pushVel.y;
-        if(this.pushVel.x > 0) this.pushVel.x -= 0.1;
-        if(this.pushVel.x < 0) this.pushVel.x += 0.1;
-        if(this.pushVel.y > 0) this.pushVel.y -= 0.1;
-        if(this.pushVel.y < 0) this.pushVel.y += 0.1;
-        if(Math.abs(this.pushVel.x) < 0.1) this.pushVel.x = 0;
-        if(Math.abs(this.pushVel.y) < 0.1) this.pushVel.y = 0;
+        if(this.health.y <= 0) this.alpha -= 5;
+        else {
+            this.rotation += this.rotationSpeed;
+            this.pos.x += this.vel.x;
+            this.pos.y += this.vel.y;
+            this.pos.x += this.pushVel.x;
+            this.pos.y += this.pushVel.y;
+            if(this.pushVel.x > 0) this.pushVel.x -= 0.1;
+            if(this.pushVel.x < 0) this.pushVel.x += 0.1;
+            if(this.pushVel.y > 0) this.pushVel.y -= 0.1;
+            if(this.pushVel.y < 0) this.pushVel.y += 0.1;
+            if(Math.abs(this.pushVel.x) < 0.1) this.pushVel.x = 0;
+            if(Math.abs(this.pushVel.y) < 0.1) this.pushVel.y = 0;
 
-        this.pos.x = constrain(this.pos.x, -750, 750);
-        this.pos.y = constrain(this.pos.y, -750, 750);
-        this.vel.x = constrain(this.vel.x, -0.5, 0.5);
-        this.vel.y = constrain(this.vel.y, -0.5, 0.5);
+            this.pos.x = constrain(this.pos.x, -750, 750);
+            this.pos.y = constrain(this.pos.y, -750, 750);
+            this.vel.x = constrain(this.vel.x, -0.5, 0.5);
+            this.vel.y = constrain(this.vel.y, -0.5, 0.5);
+        }
     };
 
     this.gotHit = function(other) {
@@ -149,7 +155,9 @@ function Shape(x, y, id) {
         //Draw temporary canvas onto original canvas
         c.save();
         c.translate(this.pos.x, this.pos.y);
+        c.scale(1 + (this.alpha / 100), 1 + (this.alpha / 100));
         c.rotate(this.rotation * (Math.PI / 180));
+        c.globalAlpha = this.alpha * 2.55;
         c.drawImage(this.tempCanvas, -this.size / 2, -this.size / 2);
         c.restore();
     };
