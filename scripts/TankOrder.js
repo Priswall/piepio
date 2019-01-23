@@ -5,6 +5,27 @@ var tankorder = [
         classes.indexOf("Sniper"),
         classes.indexOf("Machine Gunner"),
         classes.indexOf("Flank Guard")
+    ],
+    [
+        classes.indexOf("Triple Shot"),
+        classes.indexOf("Twin Flank"),
+        classes.indexOf("Quad Tank")
+    ],
+    [
+        classes.indexOf("Assassin"),
+        classes.indexOf("Overseer"),
+        classes.indexOf("Hunter"),
+        classes.indexOf("Trapper")
+    ],
+    [
+        classes.indexOf("Destroyer"),
+        classes.indexOf("Gunner")
+    ],
+    [
+        classes.indexOf("Tri-Angle"),
+        classes.indexOf("Quad Tank"),
+        classes.indexOf("Twin Flank"),
+        classes.indexOf("Auto 3")
     ]
 ];
 //Used for the upgrade screen GUI when the tank class can be changed
