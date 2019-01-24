@@ -67,10 +67,10 @@ function Bullet(x, y, dx, dy, id, source) {
                 c.arc(0, 0, 6 + (this.damage * 1.5), 0, 2 * Math.PI);
                 break;
             case 1:                 //Drone
-                c.rotate(Math.atan2((this.destination.x / this.mag), (this.destination.y / this.mag)) * (Math.PI / 180));
+                c.rotate(Math.atan2(this.destination.x / this.mag, this.destination.y / this.mag));
                 c.moveTo(-6 - (this.damage * 0.75), -4.4 - (this.damage * 0.75));
-                c.lineTo(6 - (this.damage * 0.75), -4.4 - (this.damage * 0.75));
-                c.lineTo(0, 6 - (this.damage * 0.75));
+                c.lineTo(6 + (this.damage * 0.75), -4.4 - (this.damage * 0.75));
+                c.lineTo(0, 6 + (this.damage * 0.75));
                 c.lineTo(-6 - (this.damage * 0.75), -4.4 - (this.damage * 0.75));
                 break;
         }
