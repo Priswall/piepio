@@ -11,17 +11,19 @@ function upgradeTankMenu() {
         
     c.fillStyle = colors.lightgray;
     c.strokeStyle = colors.strokegray;
-    c.save();
-    c.translate(85, 65);
-    c.rotate((frames / 100) % 360);
-    //tankshow[tankorder[player.id][0]]();
-    c.fillStyle = colors.lightblue;
-    c.strokeStyle = colors.strokeblue;
-    c.beginPath();
-    c.arc(0, 0, 20, 0, 2 * Math.PI);
-    c.fill();
-    c.stroke();
-    c.restore();
+    if(tankshow[tankorder[player.id][0]] != undefined) {
+        c.save();
+        c.translate(85, 65);
+        c.rotate((frames / 100) % 360);
+        tankshow[tankorder[player.id][0]]();
+        c.fillStyle = colors.lightblue;
+        c.strokeStyle = colors.strokeblue;
+        c.beginPath();
+        c.arc(0, 0, 20, 0, 2 * Math.PI);
+        c.fill();
+        c.stroke();
+        c.restore();
+    }
     c.fillStyle = "white";
     c.strokeStyle = "rgba(100, 100, 100, 0.5)";
     c.strokeText(classes[tankorder[player.id][0]], 85, 145);
@@ -36,17 +38,19 @@ function upgradeTankMenu() {
         
         c.fillStyle = colors.lightgray;
         c.strokeStyle = colors.strokegray;
-        c.save();
-        c.translate(245, 65);
-        c.rotate((frames / 100) % 360);
-        //tankshow[tankorder[player.id][1]]();
-        c.fillStyle = colors.lightblue;
-        c.strokeStyle = colors.strokeblue;
-        c.beginPath();
-        c.arc(0, 0, 20, 0, 2 * Math.PI);
-        c.fill();
-        c.stroke();
-        c.restore();
+        if(tankshow[tankorder[player.id][1]] != undefined) {
+            c.save();
+            c.translate(245, 65);
+            c.rotate((frames / 100) % 360);
+            tankshow[tankorder[player.id][1]]();
+            c.fillStyle = colors.lightblue;
+            c.strokeStyle = colors.strokeblue;
+            c.beginPath();
+            c.arc(0, 0, 20, 0, 2 * Math.PI);
+            c.fill();
+            c.stroke();
+            c.restore();
+        }
         c.fillStyle = "white";
         c.strokeStyle = "rgba(100, 100, 100, 0.5)";
         c.strokeText(classes[tankorder[player.id][1]], 245, 145);
@@ -62,17 +66,19 @@ function upgradeTankMenu() {
         
         c.fillStyle = colors.lightgray;
         c.strokeStyle = colors.strokegray;
-        c.save();
-        c.translate(85, 225);
-        c.rotate((frames / 100) % 360);
-        //tankshow[tankorder[player.id][2]]();
-        c.fillStyle = colors.lightblue;
-        c.strokeStyle = colors.strokeblue;
-        c.beginPath();
-        c.arc(0, 0, 20, 0, 2 * Math.PI);
-        c.fill();
-        c.stroke();
-        c.restore();
+        if(tankshow[tankorder[player.id][2]] != undefined) {
+            c.save();
+            c.translate(85, 225);
+            c.rotate((frames / 100) % 360);
+            tankshow[tankorder[player.id][2]]();
+            c.fillStyle = colors.lightblue;
+            c.strokeStyle = colors.strokeblue;
+            c.beginPath();
+            c.arc(0, 0, 20, 0, 2 * Math.PI);
+            c.fill();
+            c.stroke();
+            c.restore();
+        }
         c.fillStyle = "white";
         c.strokeStyle = "rgba(100, 100, 100, 0.5)";
         c.strokeText(classes[tankorder[player.id][2]], 85, 310);
@@ -88,17 +94,19 @@ function upgradeTankMenu() {
         
         c.fillStyle = colors.lightgray;
         c.strokeStyle = colors.strokegray;
-        c.save();
-        c.translate(245, 225);
-        c.rotate((frames / 100) % 360);
-        //tankshow[tankorder[player.id][3]]();
-        c.fillStyle = colors.lightblue;
-        c.strokeStyle = colors.strokeblue;
-        c.beginPath();
-        c.arc(0, 0, 20, 0, 2 * Math.PI);
-        c.fill();
-        c.stroke();
-        c.restore();
+        if(tankshow[tankorder[player.id][3]] != undefined) {
+            c.save();
+            c.translate(245, 225);
+            c.rotate((frames / 100) % 360);
+            tankshow[tankorder[player.id][3]]();
+            c.fillStyle = colors.lightblue;
+            c.strokeStyle = colors.strokeblue;
+            c.beginPath();
+            c.arc(0, 0, 20, 0, 2 * Math.PI);
+            c.fill();
+            c.stroke();
+            c.restore();
+        }
         c.fillStyle = "white";
         c.strokeStyle = "rgba(100, 100, 100, 0.5)";
         c.strokeText(classes[tankorder[player.id][3]], 245, 310);
