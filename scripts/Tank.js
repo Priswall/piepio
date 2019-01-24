@@ -227,6 +227,27 @@ function Tank(x, y, rotation, team, id) {
                             (this.pos.y - Math.cos(this.rotation + (90 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
                             1, this));
                         break;
+                    case classes.indexOf("Hunter"):
+                        var temp = this.damage.y;
+                        this.damage.y *= 0.75;
+                        bullets.push(new Bullet(
+                            this.pos.x + Math.sin(this.rotation) * 40,
+                            this.pos.y - Math.cos(this.rotation) * 40,
+                            (this.pos.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                            (this.pos.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                            0, this));
+                        this.damage.y = temp;
+                        this.barrels[0].cooldown = 0;
+                        setTimeout(() => {
+                            bullets.push(new Bullet(
+                                this.pos.x + Math.sin(this.rotation) * 40,
+                                this.pos.y - Math.cos(this.rotation) * 40,
+                                (this.pos.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                (this.pos.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                0, this));
+                            this.barrels[1].cooldown = 0;
+                        }, 200);
+                        break;
                 }
                 this.cooldown = 0;
                 this.timeStamp = time.getTime();
