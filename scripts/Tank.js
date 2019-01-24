@@ -246,7 +246,7 @@ function Tank(x, y, rotation, team, id) {
                                 (this.pos.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
                                 0, this));
                             this.barrels[1].cooldown = 0;
-                        }, 200);
+                        }, 100);
                         break;
                     case classes.indexOf("Gunner"):
                         //Alternate between barrels
