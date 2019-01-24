@@ -60,7 +60,7 @@ function Bullet(x, y, dx, dy, id, source) {
         }
 
         c.save();
-        c.translate(0, 0);
+        c.translate(this.pos.x, this.pos.y);
         c.beginPath();
         switch(this.id) {
             case 0:                 //Default bullet
