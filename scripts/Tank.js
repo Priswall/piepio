@@ -214,6 +214,20 @@ function Tank(x, y, rotation, team, id) {
                                 break;
                         }
                         break;
+                    case classes.indexOf("Overseer"):
+                        bullets.push(new Bullet(
+                            this.pos.x + Math.sin(this.rotation + (-90 * (Math.PI / 180))) * 40,
+                            this.pos.y - Math.cos(this.rotation + (-90 * (Math.PI / 180))) * 40,
+                            (this.pos.x + Math.sin(this.rotation + (-90 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                            (this.pos.y - Math.cos(this.rotation + (-90 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                            1, this));
+                        bullets.push(new Bullet(
+                            this.pos.x + Math.sin(this.rotation + (90 * (Math.PI / 180))) * 40,
+                            this.pos.y - Math.cos(this.rotation + (90 * (Math.PI / 180))) * 40,
+                            (this.pos.x + Math.sin(this.rotation + (90 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                            (this.pos.y - Math.cos(this.rotation + (90 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                            1, this));
+                        break;
                 }
                 this.cooldown = 0;
                 this.timeStamp = time.getTime();
