@@ -140,6 +140,8 @@ function Tank(x, y, rotation, team, id) {
                                 this.barrels[2].cooldown = 0;
                                 this.barrel = 0;
                                 break;
+                        }
+                        break;
                     case classes.indexOf("Quad Tank"):
                         //Alternate between barrels
                         switch(this.barrel) {
@@ -177,8 +179,6 @@ function Tank(x, y, rotation, team, id) {
                                 this.barrels[3].cooldown = 0;
                                 this.barrel = 0;
                                 break;
-                        }
-                        break;
                         }
                         break;
                 }
