@@ -40,9 +40,14 @@ function draw() {
                Math.abs(shapes[i].pos.y - player.pos.y) < (shapes[i].size / 2) + 17.5)
                 shapes[i].gotHit(player);
             for(var j = 0; j < bullets.length; j++) {
-                if(Math.abs(shapes[i].pos.x - bullets[j].pos.x) < (shapes[i].size / 2) + 8 &&
-                   Math.abs(shapes[i].pos.y - bullets[j].pos.y) < (shapes[i].size / 2) + 8)
+                if(Math.abs(shapes[i].pos.x - bullets[j].pos.x) < (shapes[i].size / 2) + 6 + (bullets[j].damage * 0.75) &&
+                   Math.abs(shapes[i].pos.y - bullets[j].pos.y) < (shapes[i].size / 2) + 6 + (bullets[j].damage * 0.75))
                     shapes[i].gotHit(bullets[j]);
+            }
+            for(var j = 0; j < player.bullets.length; j++) {
+                if(Math.abs(shapes[i].pos.x - player.bullets[j].pos.x) < (shapes[i].size / 2) + 6 + (player.bullets[j].damage * 0.75) &&
+                   Math.abs(shapes[i].pos.y - player.bullets[j].pos.y) < (shapes[i].size / 2) + 6 + (player.bullets[j].damage * 0.75))
+                    shapes[i].gotHit(player.bullets[j]);
             }
             for(var j = 0; j < shapes.length; j++) {
                 if(i !== j) {
