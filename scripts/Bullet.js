@@ -19,6 +19,7 @@ function Bullet(x, y, dx, dy, id, source) {
                 this.pos.y -= (this.destination.y / this.mag) * this.speed;
 
                 this.lifetime -= 0.1;
+                break;
             case 1:
                 if(mouseIsPressed) {
                     this.destination = new Vector(this.pos.x - (mouse.x - cam.x), this.pos.y - (mouse.y - cam.y));
@@ -26,6 +27,7 @@ function Bullet(x, y, dx, dy, id, source) {
                     this.pos.x -= (this.destination.x / this.mag) * this.speed;
                     this.pos.y -= (this.destination.y / this.mag) * this.speed;
                 }
+                break;
         }
         //Determine the amount of time passed since last damage tick
         if(this.cooldown < this.reload) {
