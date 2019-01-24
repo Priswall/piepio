@@ -344,7 +344,7 @@ function Tank(x, y, rotation, team, id) {
         
         for(var i = 0; i < this.bullets.length; i++) {
             this.bullets[i].update();
-            this.bullets[i].show();
+            this.bullets[i].draw();
             for(var j = 0; j < this.bullets.length; j++) {
                 if(i != j) {
                     if(Math.abs(this.bullets[i].pos.x - this.bullets[j].pos.x) < 12 + (this.bullets[i].damage * 0.75) + (this.bullets[j].damage * 0.75) &&
