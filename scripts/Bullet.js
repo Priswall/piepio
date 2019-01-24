@@ -1,10 +1,10 @@
 function Bullet(x, y, dx, dy, id, source) {
+    this.id = id;
     this.pos = new Vector(x, y);
     if(this.id === 0) this.vel = new Vector(2, 2);
     if(this.id === 1) this.vel = new Vector(0, 0);
     this.destination = new Vector(this.pos.x - dx, this.pos.y - dy);
     this.mag = Math.sqrt(this.destination.x * this.destination.x + this.destination.y * this.destination.y);
-    this.id = id;
     // Gets these variables from the tank that shot them using the source parameter
     this.speed = source.bulletSpeed.y;
     this.damage = source.bulletDamage.y;
