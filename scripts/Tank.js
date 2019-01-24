@@ -215,10 +215,10 @@ function Tank(x, y, rotation, team, id) {
                         break;
                     case classes.indexOf("Overseer"):
                         bullets.push(new Bullet(
-                            this.pos.x + Math.sin(this.rotation + (-90 * (Math.PI / 180))) * 40,
-                            this.pos.y - Math.cos(this.rotation + (-90 * (Math.PI / 180))) * 40,
-                            (this.pos.x + Math.sin(this.rotation + (-90 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
-                            (this.pos.y - Math.cos(this.rotation + (-90 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                            this.pos.x + Math.sin(this.rotation - (90 * (Math.PI / 180))) * 40,
+                            this.pos.y - Math.cos(this.rotation - (90 * (Math.PI / 180))) * 40,
+                            (this.pos.x + Math.sin(this.rotation - (90 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                            (this.pos.y - Math.cos(this.rotation - (90 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
                             1, this));
                         bullets.push(new Bullet(
                             this.pos.x + Math.sin(this.rotation + (90 * (Math.PI / 180))) * 40,
@@ -229,7 +229,7 @@ function Tank(x, y, rotation, team, id) {
                         break;
                     case classes.indexOf("Hunter"):
                         var temp = this.bulletDamage.y;
-                        this.damage.y *= 0.75;
+                        this.bulletDamage.y *= 0.75;
                         bullets.push(new Bullet(
                             this.pos.x + Math.sin(this.rotation) * 40,
                             this.pos.y - Math.cos(this.rotation) * 40,
@@ -247,6 +247,45 @@ function Tank(x, y, rotation, team, id) {
                                 0, this));
                             this.barrels[1].cooldown = 0;
                         }, 200);
+                        break;
+                    case classes.indexOf("Gunner"):
+                        //Alternate between barrels
+                        switch(this.barrel) {
+                            case 0:
+                                bullets.push(new Bullet(
+                                    this.pos.x + Math.sin(this.rotation - (15 * (Math.PI / 180))) * 40,
+                                    this.pos.y - Math.cos(this.rotation - (15 * (Math.PI / 180))) * 40,
+                                    (this.pos.x + Math.sin(this.rotation - (8.5 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                    (this.pos.y - Math.cos(this.rotation - (8.5 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                    0, this));
+                                bullets.push(new Bullet(
+                                    this.pos.x + Math.sin(this.rotation + (15 * (Math.PI / 180))) * 40,
+                                    this.pos.y - Math.cos(this.rotation + (15 * (Math.PI / 180))) * 40,
+                                    (this.pos.x + Math.sin(this.rotation + (8.5 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                    (this.pos.y - Math.cos(this.rotation + (8.5 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                    0, this));
+                                this.barrels[0].cooldown = 0;
+                                this.barrels[1].cooldown = 0;
+                                this.barrel = 1;
+                                break;
+                            case 1:
+                                bullets.push(new Bullet(
+                                    this.pos.x + Math.sin(this.rotation - (16 * (Math.PI / 180))) * 40,
+                                    this.pos.y - Math.cos(this.rotation - (16 * (Math.PI / 180))) * 40,
+                                    (this.pos.x + Math.sin(this.rotation - (7 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                    (this.pos.y - Math.cos(this.rotation - (7 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                    0, this));
+                                bullets.push(new Bullet(
+                                    this.pos.x + Math.sin(this.rotation + (16 * (Math.PI / 180))) * 40,
+                                    this.pos.y - Math.cos(this.rotation + (16 * (Math.PI / 180))) * 40,
+                                    (this.pos.x + Math.sin(this.rotation + (7 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                    (this.pos.y - Math.cos(this.rotation + (7 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                    0, this));
+                                this.barrels[2].cooldown = 0;
+                                this.barrels[3].cooldown = 0;
+                                this.barrel = 0;
+                                break;
+                        }
                         break;
                 }
                 this.cooldown = 0;
@@ -385,10 +424,10 @@ function Tank(x, y, rotation, team, id) {
                 break;
             case classes.indexOf("Gunner"):
                 this.barrels = [
-                    new Barrel(-15, 0, 0, 15, 45, 0),
-                    new Barrel(15, 0, 0, 15, 45, 0),
-                    new Barrel(-7.5, 0, 0, 15, 50, 0),
-                    new Barrel(7.5, 0, 0, 15, 50, 0)
+                    new Barrel(-15, 0, 0, 10, 45, 0),
+                    new Barrel(15, 0, 0, 10, 45, 0),
+                    new Barrel(-7.5, 0, 0, 10, 50, 0),
+                    new Barrel(7.5, 0, 0, 10, 50, 0)
                 ];
                 break;
             case classes.indexOf("Tri-Angle"):
