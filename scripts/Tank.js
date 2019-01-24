@@ -216,7 +216,7 @@ function Tank(x, y, rotation, team, id) {
                         }
                         break;
                     case classes.indexOf("Overseer"):
-                        if(this.bullets.length > 7) {
+                        if(this.bullets.length < 7) {
                             this.bullets.push(new Bullet(
                                 this.pos.x + Math.sin(this.rotation - (90 * (Math.PI / 180))) * 40,
                                 this.pos.y - Math.cos(this.rotation - (90 * (Math.PI / 180))) * 40,
