@@ -19,6 +19,13 @@ function Bullet(x, y, dx, dy, id, source) {
                 this.pos.y -= (this.destination.y / this.mag) * this.speed;
 
                 this.lifetime -= 0.1;
+            case 1:
+                if(mouseIsPressed) {
+                    this.destination = new Vector(this.pos.x - (mouse.x - cam.x), this.pos.y - (mouse.y - cam.y));
+                    this.mag = Math.sqrt(this.destination.x * this.destination.x + this.destination.y * this.destination.y);
+                    this.pos.x -= (this.destination.x / this.mag) * this.speed;
+                    this.pos.y -= (this.destination.y / this.mag) * this.speed;
+                }
         }
         //Determine the amount of time passed since last damage tick
         if(this.cooldown < this.reload) {
@@ -53,6 +60,9 @@ function Bullet(x, y, dx, dy, id, source) {
         c.beginPath();
         switch(this.id) {
             case 0:                 //Default bullet
+                c.arc(this.pos.x, this.pos.y, 6 + (this.damage * 1.5), 0, 2 * Math.PI);
+                break;
+            case 1:                 //Drone
                 c.arc(this.pos.x, this.pos.y, 6 + (this.damage * 1.5), 0, 2 * Math.PI);
                 break;
         }
