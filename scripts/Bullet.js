@@ -59,17 +59,24 @@ function Bullet(x, y, dx, dy, id, source) {
                 break;
         }
 
+        c.save();
+        c.translate(0, 0);
         c.beginPath();
         switch(this.id) {
             case 0:                 //Default bullet
-                c.arc(this.pos.x, this.pos.y, 6 + (this.damage * 1.5), 0, 2 * Math.PI);
+                c.arc(0, 0, 6 + (this.damage * 1.5), 0, 2 * Math.PI);
                 break;
             case 1:                 //Drone
-                c.arc(this.pos.x, this.pos.y, 6 + (this.damage * 1.5), 0, 2 * Math.PI);
+                c.rotate(Math.atan2((this.destination.x / this.mag), (this.destination.y / this.mag)) * (Math.PI / 180));
+                c.moveTo(-3 - (this.damage * 0.75), -2.2 - (this.damage * 0.75));
+                c.lineTo(3 - (this.damage * 0.75), -2.2 - (this.damage * 0.75));
+                c.lineTo(0, 3 - (this.damage * 0.75));
+                c.lineTo(-3 - (this.damage * 0.75), -2.2 - (this.damage * 0.75));
                 break;
         }
         c.fill();
         c.stroke();
+        c.restore();
     };
 }
 
