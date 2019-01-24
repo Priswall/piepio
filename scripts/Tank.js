@@ -30,13 +30,13 @@ function Tank(x, y, rotation, team, id) {
     this.acc = 0.2;
     this.vel = new Vector(0, 0);
     this.maxSpeed = new Vector(3, 3);
-    this.bulletDamage = new Vector(1, 1);
     this.barrels = [new Barrel(0, 0, 0, 20, 50, 0)];
     //Gets these variables from the TankStats file
     //The x part of the vectors (i.e. this.reload.x) is the normal stat before modififying it by the stat upgrades
     this.reload = new Vector(tankstats[this.class].reload, tankstats[this.class].reload);
-    this.bulletSpeed = new Vector(tankstats[this.class].bulletSpeed, tankstats[this.class].bulletSpeed);
     this.spread = new Vector(tankstats[this.class].spread, tankstats[this.class].spread);
+    this.bulletSpeed = new Vector(tankstats[this.class].bulletSpeed, tankstats[this.class].bulletSpeed);
+    this.bulletDamage = new Vector(tankstats[this.class].damage, tankstats[this.class].damage);
     this.bulletPenetration = new Vector(1, 1);
     this.timeStamp = 0;
     this.cooldown = this.reload.y;
@@ -203,6 +203,7 @@ function Tank(x, y, rotation, team, id) {
             this.reload = new Vector(tankstats[this.class].reload, tankstats[this.class].reload);
             this.bulletSpeed = new Vector(tankstats[this.class].bulletSpeed, tankstats[this.class].bulletSpeed);
             this.spread = new Vector(tankstats[this.class].spread, tankstats[this.class].spread);
+            this.bulletDamage = new Vector(tankstats[this.class].damage, tankstats[this.class].damage);
         }
 
         switch(this.id) {
