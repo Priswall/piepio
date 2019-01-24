@@ -1,5 +1,7 @@
 function Bullet(x, y, dx, dy, id, source) {
     this.pos = new Vector(x, y);
+    if(this.id === 0) this.vel = new Vector(2, 2);
+    if(this.id === 1) this.vel = new Vector(0, 0);
     this.destination = new Vector(this.pos.x - dx, this.pos.y - dy);
     this.mag = Math.sqrt(this.destination.x * this.destination.x + this.destination.y * this.destination.y);
     this.id = id;
@@ -15,8 +17,8 @@ function Bullet(x, y, dx, dy, id, source) {
     this.update = function() {
         switch(this.id) {
             case 0:                 //Default bullet
-                this.pos.x -= (this.destination.x / this.mag) * this.speed;
-                this.pos.y -= (this.destination.y / this.mag) * this.speed;
+                this.pos.x -= (this.destination.x / this.mag) * (this.speed + this.vel.x);
+                this.pos.y -= (this.destination.y / this.mag) * (this.speed + this.vel.y);
 
                 this.lifetime -= 0.1;
                 break;
@@ -26,13 +28,20 @@ function Bullet(x, y, dx, dy, id, source) {
                     this.mag = Math.sqrt(this.destination.x * this.destination.x + this.destination.y * this.destination.y);
                     this.pos.x -= (this.destination.x / this.mag) * this.speed;
                     this.pos.y -= (this.destination.y / this.mag) * this.speed;
+                    this.pos.x += this.vel.x;
+                    this.pos.y += this.vel.y;
                 }
                 break;
         }
+        if(this.vel.x > 0.1) this.vel.x -= 0.1;
+        else if(this.vel.x < 0.1) this.vel.x += 0.1;
+        else this.vel.x = 0;
+        if(this.vel.y > 0.1) this.vel.y -= 0.1;
+        else if(this.vel.y < 0.1) this.vel.y += 0.1;
+        else this.vel.y = 0;
         //Determine the amount of time passed since last damage tick
-        if(this.cooldown < this.reload) {
+        if(this.cooldown < this.reload)
             this.cooldown == time.getTime() - this.timestamp;
-        }
     };
 
     this.draw = function() {
