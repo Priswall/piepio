@@ -26,13 +26,15 @@ function Bullet(x, y, dx, dy, id, source) {
                 if(mouseIsPressed) {
                     this.destination = new Vector(this.pos.x - (mouse.x - cam.x), this.pos.y - (mouse.y - cam.y));
                     this.mag = Math.sqrt(this.destination.x * this.destination.x + this.destination.y * this.destination.y);
-                    this.pos.x -= (this.destination.x / this.mag) * this.speed;
-                    this.pos.y -= (this.destination.y / this.mag) * this.speed;
+                    this.vel.x -= (this.destination.x / this.mag) * (this.speed / 3);
+                    this.vel.y -= (this.destination.y / this.mag) * (this.speed / 3);
                     this.pos.x += this.vel.x;
                     this.pos.y += this.vel.y;
                 }
                 break;
         }
+        this.vel.x = constrain(this.vel.x, -this.speed * 1.1, this.speed * 1.1);
+        this.vel.y = constrain(this.vel.y, -this.speed * 1.1, this.speed * 1.1);
         if(this.vel.x > 0.1) this.vel.x -= 0.1;
         else if(this.vel.x < 0.1) this.vel.x += 0.1;
         else this.vel.x = 0;
