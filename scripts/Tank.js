@@ -31,6 +31,8 @@ function Tank(x, y, rotation, team, id) {
     this.vel = new Vector(0, 0);
     this.maxSpeed = new Vector(3, 3);
     this.barrels = [new Barrel(0, 0, 0, 20, 50, 0)];
+    //Create an array for drones
+    this.bullets = [];
     //Gets these variables from the TankStats file
     //The x part of the vectors (i.e. this.reload.x) is the normal stat before modififying it by the stat upgrades
     this.reload = new Vector(tankstats[this.class].reload, tankstats[this.class].reload);
@@ -214,18 +216,20 @@ function Tank(x, y, rotation, team, id) {
                         }
                         break;
                     case classes.indexOf("Overseer"):
-                        bullets.push(new Bullet(
-                            this.pos.x + Math.sin(this.rotation - (90 * (Math.PI / 180))) * 40,
-                            this.pos.y - Math.cos(this.rotation - (90 * (Math.PI / 180))) * 40,
-                            (this.pos.x + Math.sin(this.rotation - (90 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
-                            (this.pos.y - Math.cos(this.rotation - (90 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
-                            1, this));
-                        bullets.push(new Bullet(
-                            this.pos.x + Math.sin(this.rotation + (90 * (Math.PI / 180))) * 40,
-                            this.pos.y - Math.cos(this.rotation + (90 * (Math.PI / 180))) * 40,
-                            (this.pos.x + Math.sin(this.rotation + (90 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
-                            (this.pos.y - Math.cos(this.rotation + (90 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
-                            1, this));
+                        if(this.bullets.length > 7) {
+                            this.bullets.push(new Bullet(
+                                this.pos.x + Math.sin(this.rotation - (90 * (Math.PI / 180))) * 40,
+                                this.pos.y - Math.cos(this.rotation - (90 * (Math.PI / 180))) * 40,
+                                (this.pos.x + Math.sin(this.rotation - (90 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                (this.pos.y - Math.cos(this.rotation - (90 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                1, this));
+                            this.bullets.push(new Bullet(
+                                this.pos.x + Math.sin(this.rotation + (90 * (Math.PI / 180))) * 40,
+                                this.pos.y - Math.cos(this.rotation + (90 * (Math.PI / 180))) * 40,
+                                (this.pos.x + Math.sin(this.rotation + (90 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                (this.pos.y - Math.cos(this.rotation + (90 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                1, this));
+                        }
                         break;
                     case classes.indexOf("Hunter"):
                         var temp = this.bulletDamage.y;
@@ -337,6 +341,25 @@ function Tank(x, y, rotation, team, id) {
         this.rotation = Math.atan2(-(this.pos.x - (mouse.x - cam.x)), (this.pos.y - (mouse.y - cam.y)));
 
         this.shoot();
+        
+        for(var i = 0; i < this.bullets.length; i++) {
+            this.bullets[i].update();
+            this.bullets[i].show();
+            for(var j = 0; j < this.bullets.length; j++) {
+                if(i != j) {
+                    if(Math.abs(this.bullets[i].pos.x - this.bullets[j].pos.x) < 12 + (this.bullets[i].damage * 0.75) + (this.bullets[j].damage * 0.75) &&
+                       Math.abs(this.bullets[i].pos.y - this.bullets[j].pos.y) < 12 + (this.bullets[i].damage * 0.75) + (this.bullets[j].damage * 0.75)) {
+                        var dx = this.bullets[i].pos.x - this.bullets[j].pos.x;
+                        var dy = this.bullets[i].pos.y - this.bullets[j].pos.y;
+                        var mag = (dx * dx + dy * dy);
+                        this.bullets[i].vel.x += (dx / mag) * 15;
+                        this.bullets[i].vel.y += (dy / mag) * 15;
+                        this.bullets[j].vel.x -= (dx / mag) * 15;
+                        this.bullets[j].vel.y -= (dy / mag) * 15;
+                    }
+                }
+            }
+        }
     };
 
     this.reevaluateStats = function() {
