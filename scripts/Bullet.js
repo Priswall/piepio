@@ -53,7 +53,7 @@ function Bullet(x, y, dx, dy, id, source) {
         c.beginPath();
         switch(this.id) {
             case 0:                 //Default bullet
-                c.arc(this.pos.x, this.pos.y, 6 + (this.damage * 1.75), 0, 2 * Math.PI);
+                c.arc(this.pos.x, this.pos.y, 6 + (this.damage * 1.5), 0, 2 * Math.PI);
                 break;
         }
         c.fill();
