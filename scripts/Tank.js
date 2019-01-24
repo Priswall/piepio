@@ -113,7 +113,7 @@ function Tank(x, y, rotation, team, id) {
                                     (this.pos.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
                                     (this.pos.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
                                     0, this));
-                                this.barrels[0].cooldown = 0;
+                                this.barrels[2].cooldown = 0;
                                 this.barrel = 1;
                                 break;
                             case 1:
@@ -129,8 +129,8 @@ function Tank(x, y, rotation, team, id) {
                                     (this.pos.x + Math.sin(this.rotation + (45 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
                                     (this.pos.y - Math.cos(this.rotation + (45 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
                                     0, this));
+                                this.barrels[0].cooldown = 0;
                                 this.barrels[1].cooldown = 0;
-                                this.barrels[2].cooldown = 0;
                                 this.barrel = 0;
                                 break;
                         }
@@ -228,7 +228,7 @@ function Tank(x, y, rotation, team, id) {
                             1, this));
                         break;
                     case classes.indexOf("Hunter"):
-                        var temp = this.damage.y;
+                        var temp = this.bulletDamage.y;
                         this.damage.y *= 0.75;
                         bullets.push(new Bullet(
                             this.pos.x + Math.sin(this.rotation) * 40,
@@ -236,7 +236,7 @@ function Tank(x, y, rotation, team, id) {
                             (this.pos.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
                             (this.pos.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
                             0, this));
-                        this.damage.y = temp;
+                        this.bulletDamage.y = temp;
                         this.barrels[0].cooldown = 0;
                         setTimeout(() => {
                             bullets.push(new Bullet(
