@@ -89,9 +89,9 @@ function Shape(x, y, id) {
                 other.pos.y += (dy / mag) * 50;
                 this.health.y -= other.damage;
                 other.cooldown = 0;
-                other. timestamp = time.getTime();
+                other.timestamp = time.getTime();
             }
-            other.speed -= 0.1;
+			if(other.id != 1) other.speed -= 0.1;
             other.lifetime--;
         }
     };

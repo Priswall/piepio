@@ -45,25 +45,271 @@ var tankshow = [
         c.lineTo(16, -32);
         c.lineTo(0, 0);
         c.fill();
-
-        c.beginPath();
-        c.moveTo(-4, 0);
-        c.lineTo(-16, -32);
-        c.stroke();
-
-        c.beginPath();
-        c.lineTo(-16, -32);
-        c.lineTo(16, -32);
-        c.stroke();
-
-        c.beginPath();
-        c.lineTo(16, -32);
-        c.lineTo(4, 0);
         c.stroke();
     },
     function() {
         rect(-9, 0, 18, -40);
         rect(-9, 0, 18, 32);
+    },
+    function() {
+        rect(-9, 0, 18, -65);
+    },
+    function() {
+        c.beginPath();
+        c.moveTo(0, 0);
+        c.lineTo(-35, -20);
+        c.lineTo(-35, 20);
+        c.lineTo(0, 10);
+        c.fill();
+        c.stroke();
+              
+        c.beginPath();
+        c.moveTo(0, 10);
+        c.lineTo(35, 20);
+        c.lineTo(35, -20);
+        c.lineTo(0, -5);
+        c.fill();
+        c.stroke();
+    },
+    function() {
+        rect(-9, 0, 18, -55);
+        rect(-13, 0, 26, -48);
+    },
+    function() {
+        rect(3, 0, 20, -50);
+        rect(-24, 0, 20, -50);
+        rect(3, 0, 20, 50);
+        rect(-24, 0, 20, 50);
+    },
+    function() {
+        rect(-10, 0, 18, -50);
+
+        c.save();
+        c.translate(-10, 0);
+        c.rotate(0.75);
+        rect(0, 0, 18, -55);
+        c.restore();
+              
+        c.save();
+        c.translate(-10, 0);
+        c.rotate(-0.75);
+        rect(-5, 0, 18, -40);
+        c.restore();
+    },
+    function() {
+        rect(-9, 0, 18, -50);
+        rect(9, 0, -18, 50);
+        rect(0, -9, -50, 18);
+        rect(0, 9, 50, -18);
+    },
+    function() {
+        rect(3, 0, 20, -50);
+        rect(-24, 0, 20, -50);
+        rect(-9, 0, 18, -55);
+    },
+    function() {
+        rect(-9, 0, 18, -50);
+        rect(9, 0, -18, 50);
+        rect(0, -9, -50, 18);
+        rect(0, 9, 50, -18);
+              
+        c.save();
+        c.rotate(0.7854);
+        rect(-9, 0, 18, -50);
+        rect(9, 0, -18, 50);
+        rect(0, -9, -50, 18);
+        rect(0, 9, 50, -18);
+        c.restore();
+    },
+    function() {
+        rect(-3, -50, 6, 45);
+        rect(-9, -47, 6, 45);
+        rect(3, -47, 6, 45);
+        rect(-15, -44, 6, 45);
+        rect(9, -44, 6, 45);
+    },
+    function() {
+        c.beginPath();
+        c.moveTo(0, 0);
+        c.lineTo(-20, -35);
+        c.lineTo(20, -35);
+        c.lineTo(0, 0);
+        c.fill();
+        c.stroke();
+    },
+    function() {
+        rect(3, 0, 20, -50);
+        rect(-24, 0, 20, -50);
+              
+        c.save();
+        c.translate(0, 0);
+        c.rotate(2.095);
+        rect(3, 0, 20, -50);
+        rect(-24, 0, 20, -50);
+        c.restore();
+              
+        c.save();
+        c.translate(0, 0);
+        c.rotate(-2.095);
+        rect(3, 0, 20, -50);
+        rect(-24, 0, 20, -50);
+        c.restore();
+    },
+    function() {
+        c.beginPath();
+        c.moveTo(0, 0);
+        c.lineTo(-35, -20);
+        c.lineTo(-35, 20);
+        c.lineTo(0, 10);
+        c.fill();
+        c.stroke();
+              
+        c.beginPath();
+        c.moveTo(0, 10);
+        c.lineTo(35, 20);
+        c.lineTo(35, -20);
+        c.lineTo(0, -5);
+        c.fill();
+        c.stroke();
+              
+        c.save();
+        c.translate(0, 0);
+        c.rotate(1.57);
+              
+        c.beginPath();
+        c.moveTo(0, 0);
+        c.lineTo(-35, -20);
+        c.lineTo(-35, 20);
+        c.lineTo(0, 10);
+        c.fill();
+        c.stroke();
+              
+        c.beginPath();
+        c.moveTo(0, 10);
+        c.lineTo(35, 20);
+        c.lineTo(35, -20);
+        c.lineTo(0, -5);
+        c.fill();
+        c.stroke();
+              
+        c.restore();
+    },
+    function () {
+        rect(-15, -30, 30, 30);
+        rect(-20, -40, 40, 10);
+    },
+    function () {
+        rect(-10, -30, 20, 30);
+        
+        c.beginPath();
+        c.moveTo(-10, -30);
+        c.lineTo(10, -30);
+        c.lineTo(20, -35);
+        c.lineTo(-20, -35);
+        c.lineTo(-10, -30);
+        c.fill();
+        c.stroke();
+    },
+    function () {
+        rect(-15, -30, 30, 30);
+        
+        c.beginPath();
+        c.moveTo(-15, -30);
+        c.lineTo(15, -30);
+        c.lineTo(25, -40);
+        c.lineTo(-25, -40);
+        c.lineTo(-15, -30);
+        c.fill();
+        c.stroke();
+    },
+    function () {
+        rect(-10, -30, 20, 30);
+        
+        c.beginPath();
+        c.moveTo(-10, -30);
+        c.lineTo(10, -30);
+        c.lineTo(20, -35);
+        c.lineTo(-20, -35);
+        c.lineTo(-10, -30);
+        c.fill();
+        c.stroke();
+        
+        c.save();
+        c.rotate(2.0944);
+        rect(-10, -30, 20, 30);
+              
+        c.beginPath();
+        c.moveTo(-10, -30);
+        c.lineTo(10, -30);
+        c.lineTo(20, -35);
+        c.lineTo(-20, -35);
+        c.lineTo(-10, -30);
+        c.fill();
+        c.stroke();
+        c.restore();
+        
+        c.save();
+        c.rotate(-2.0944);
+        rect(-10, -30, 20, 30);
+              
+        c.beginPath();
+        c.moveTo(-10, -30);
+        c.lineTo(10, -30);
+        c.lineTo(20, -35);
+        c.lineTo(-20, -35);
+        c.lineTo(-10, -30);
+        c.fill();
+        c.stroke();
+        c.restore();
+        
+    },
+    function() {
+        rect(-20, 0, 40, -50);
+    },
+    function() {
+        rect(-25, 0, 50, -50);
+    },
+    function() {
+        rect(-25, 0, 10, -40);
+        rect(-12.5, 0, 10, -50);
+        rect(2.5, 0, 10, -50);
+        rect(15, 0, 10, -40);
+    },
+    function() {
+        rect(-9, 0, 18, -50);
+              
+        c.save();
+        c.rotate(0.5236);
+        rect(-9, 0, 18, 40);
+        c.restore();
+              
+        c.save();
+        c.rotate(-0.5236);
+        rect(-9, 0, 18, 40);
+        c.restore();
+    },
+    function() {
+        rect(-9, 0, 18, -50);
+              
+        c.save();
+        c.rotate(0.4);
+        rect(-9, 0, 18, 40);
+        c.restore();
+              
+        c.save();
+        c.rotate(-0.4);
+        rect(-9, 0, 18, 40);
+        c.restore();
+              
+        c.save();
+        c.rotate(0.6);
+        rect(-9, 0, 18, 40);
+        c.restore();
+              
+        c.save();
+        c.rotate(-0.6);
+        rect(-9, 0, 18, 40);
+        c.restore();
     }
 ];
 

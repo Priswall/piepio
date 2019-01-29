@@ -11,7 +11,7 @@ function Bullet(x, y, dx, dy, id, source) {
     this.lifetime = source.bulletPenetration.y * 20;
     this.team = source.team;
     this.reload = 1000 / 3;
-    this.cooldown = this.reload;
+    this.cooldown = 1000 / 3;
     this.timestamp = 0;
 
     this.update = function() {
@@ -23,18 +23,16 @@ function Bullet(x, y, dx, dy, id, source) {
                 this.lifetime -= 0.1;
                 break;
             case 1:
-                if(mouseIsPressed) {
-                    this.destination = new Vector(this.pos.x - (mouse.x - cam.x), this.pos.y - (mouse.y - cam.y));
-                    this.mag = Math.sqrt(this.destination.x * this.destination.x + this.destination.y * this.destination.y);
-                    this.vel.x -= (this.destination.x / this.mag) * (this.speed / 3);
-                    this.vel.y -= (this.destination.y / this.mag) * (this.speed / 3);
-                    this.pos.x += this.vel.x;
-                    this.pos.y += this.vel.y;
-                }
+                this.destination = new Vector(this.pos.x - (mouse.x - cam.x), this.pos.y - (mouse.y - cam.y));
+                this.mag = Math.sqrt(this.destination.x * this.destination.x + this.destination.y * this.destination.y);
+                this.vel.x -= (this.destination.x / this.mag) * (this.speed / 15);
+                this.vel.y -= (this.destination.y / this.mag) * (this.speed / 15);
+                this.pos.x += this.vel.x / 2;
+                this.pos.y += this.vel.y / 2;
                 break;
         }
-        this.vel.x = constrain(this.vel.x, -this.speed * 1.1, this.speed * 1.1);
-        this.vel.y = constrain(this.vel.y, -this.speed * 1.1, this.speed * 1.1);
+        this.vel.x = constrain(this.vel.x, -this.speed, this.speed);
+        this.vel.y = constrain(this.vel.y, -this.speed, this.speed);
         if(this.vel.x > 0.1) this.vel.x -= 0.1;
         else if(this.vel.x < 0.1) this.vel.x += 0.1;
         else this.vel.x = 0;
@@ -43,7 +41,7 @@ function Bullet(x, y, dx, dy, id, source) {
         else this.vel.y = 0;
         //Determine the amount of time passed since last damage tick
         if(this.cooldown < this.reload)
-            this.cooldown == time.getTime() - this.timestamp;
+            this.cooldown = time.getTime() - this.timestamp;
     };
 
     this.draw = function() {
@@ -79,10 +77,10 @@ function Bullet(x, y, dx, dy, id, source) {
                 break;
             case 1:                 //Drone
                 c.rotate(-Math.atan2(this.destination.x / this.mag, this.destination.y / this.mag));
-                c.moveTo(-6 - (this.damage * 0.75), -4.4 - (this.damage * 0.75));
-                c.lineTo(6 + (this.damage * 0.75), -4.4 - (this.damage * 0.75));
-                c.lineTo(0, 6 + (this.damage * 0.75));
-                c.lineTo(-6 - (this.damage * 0.75), -4.4 - (this.damage * 0.75));
+                c.moveTo(-6 - (this.damage * 0.75), 6 + (this.damage * 0.75));
+                c.lineTo(6 + (this.damage * 0.75), 6 + (this.damage * 0.75));
+                c.lineTo(0, -4.4 - (this.damage * 0.75));
+                c.lineTo(-6 - (this.damage * 0.75), 6 + (this.damage * 0.75));
                 break;
         }
         c.fill();
