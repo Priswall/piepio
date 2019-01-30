@@ -1,8 +1,8 @@
 //Determine what classes the tank can be changed to
 var tankorder = [
     [
-        classes.indexOf("Twin"),
         classes.indexOf("Sniper"),
+        classes.indexOf("Twin"),
         classes.indexOf("Machine Gunner"),
         classes.indexOf("Flank Guard")
     ],
@@ -52,42 +52,40 @@ var tankshow = [
         rect(-9, 0, 18, 32);
     },
     function() {
-        rect(-9, 0, 18, -65);
+        rect(-9, 0, 18, -55);
     },
     function() {
         c.beginPath();
-        c.moveTo(0, 0);
-        c.lineTo(-35, -20);
-        c.lineTo(-35, 20);
-        c.lineTo(0, 10);
+        c.moveTo(10, 0);
+        c.lineTo(-30, -15);
+        c.lineTo(-30, 15);
+        c.lineTo(10, 0);
         c.fill();
         c.stroke();
               
         c.beginPath();
-        c.moveTo(0, 10);
-        c.lineTo(35, 20);
-        c.lineTo(35, -20);
-        c.lineTo(0, -5);
+        c.moveTo(-10, 0);
+        c.lineTo(30, 15);
+        c.lineTo(30, -15);
+        c.lineTo(-10, 0);
         c.fill();
         c.stroke();
     },
     function() {
-        rect(-9, 0, 18, -55);
-        rect(-13, 0, 26, -48);
+        rect(-9, 0, 18, -50);
+        rect(-13, 0, 26, -43);
     },
     function() {
-        rect(3, 0, 20, -50);
-        rect(-24, 0, 20, -50);
-        rect(3, 0, 20, 50);
-        rect(-24, 0, 20, 50);
+        rect(0, 40, 16, -80);
+        rect(-17.6, 40, 16, -80);
     },
     function() {
-        rect(-10, 0, 18, -50);
+        rect(-10, 0, 18, -45);
 
         c.save();
         c.translate(-10, 0);
         c.rotate(0.75);
-        rect(0, 0, 18, -55);
+        rect(0, 0, 18, -50);
         c.restore();
               
         c.save();
@@ -97,10 +95,8 @@ var tankshow = [
         c.restore();
     },
     function() {
-        rect(-9, 0, 18, -50);
-        rect(9, 0, -18, 50);
-        rect(0, -9, -50, 18);
-        rect(0, 9, 50, -18);
+        rect(-8, 40, 16, -80);
+        rect(40, -8, -80, 16);
     },
     function() {
         rect(3, 0, 20, -50);
@@ -199,14 +195,14 @@ var tankshow = [
         rect(-20, -40, 40, 10);
     },
     function () {
-        rect(-10, -30, 20, 30);
+        rect(-10, -25, 20, 20);
         
         c.beginPath();
-        c.moveTo(-10, -30);
-        c.lineTo(10, -30);
-        c.lineTo(20, -35);
-        c.lineTo(-20, -35);
-        c.lineTo(-10, -30);
+        c.moveTo(-10, -25);
+        c.lineTo(10, -25);
+        c.lineTo(15, -30);
+        c.lineTo(-15, -30);
+        c.lineTo(-10, -25);
         c.fill();
         c.stroke();
     },
@@ -264,52 +260,31 @@ var tankshow = [
         
     },
     function() {
-        rect(-20, 0, 40, -50);
+        rect(-15, 0, 30, -40);
     },
     function() {
         rect(-25, 0, 50, -50);
     },
     function() {
-        rect(-25, 0, 10, -40);
-        rect(-12.5, 0, 10, -50);
-        rect(2.5, 0, 10, -50);
-        rect(15, 0, 10, -40);
+        rect(6, 0, 8, -35);
+        rect(-16, 0, 8, -35);
+        rect(1, 0, 8, -40);
+        rect(-11, 0, 8, -40);
     },
     function() {
-        rect(-9, 0, 18, -50);
+        rect(-9, 0, 18, -40);
               
         c.save();
         c.rotate(0.5236);
-        rect(-9, 0, 18, 40);
+        rect(-9, 0, 18, 30);
         c.restore();
               
         c.save();
         c.rotate(-0.5236);
-        rect(-9, 0, 18, 40);
+        rect(-9, 0, 18, 30);
         c.restore();
     },
     function() {
-        rect(-9, 0, 18, -50);
-              
-        c.save();
-        c.rotate(0.4);
-        rect(-9, 0, 18, 40);
-        c.restore();
-              
-        c.save();
-        c.rotate(-0.4);
-        rect(-9, 0, 18, 40);
-        c.restore();
-              
-        c.save();
-        c.rotate(0.6);
-        rect(-9, 0, 18, 40);
-        c.restore();
-              
-        c.save();
-        c.rotate(-0.6);
-        rect(-9, 0, 18, 40);
-        c.restore();
     }
 ];
 
