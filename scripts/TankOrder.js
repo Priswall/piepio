@@ -24,8 +24,7 @@ var tankorder = [
     [
         classes.indexOf("Tri-Angle"),
         classes.indexOf("Quad Tank"),
-        classes.indexOf("Twin Flank"),
-        classes.indexOf("Auto 3")
+        classes.indexOf("Twin Flank")
     ]
 ];
 //Used for the upgrade screen GUI when the tank class can be changed

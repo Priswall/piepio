@@ -68,8 +68,8 @@ function Shape(x, y, id) {
             var mag = (dx * dx + dy * dy);
             this.pushVel.x = (dx / mag) * 30;
             this.pushVel.y = (dy / mag) * 30;
-            other.pos.x -= (dx / mag) * 15;
-            other.pos.y -= (dy / mag) * 15;
+            other.pushVel.x -= (dx / mag) * 7.5;
+            other.pushVel.y -= (dy / mag) * 7.5;
         } else if(other instanceof Shape) {
             var dx = this.pos.x - other.pos.x;
             var dy = this.pos.y - other.pos.y;

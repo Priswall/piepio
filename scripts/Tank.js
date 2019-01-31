@@ -31,6 +31,8 @@ var classes = [
 
 function Tank(x, y, rotation, team, id) {
     this.pos = new Vector(x, y);
+    this.vel = new Vector(0, 0);
+    this.pushVel = new Vector(0, 0);
     this.rotation = rotation;
     this.team = team;
     this.id = id;
@@ -38,7 +40,6 @@ function Tank(x, y, rotation, team, id) {
     this.xp = 0;
     this.lvl = 0;
     this.acc = 0.2;
-    this.vel = new Vector(0, 0);
     this.maxSpeed = new Vector(3, 3);
     this.barrels = [new Barrel(0, 0, 0, 20, 50, 0)];
     //Create an array for drones
@@ -62,9 +63,49 @@ function Tank(x, y, rotation, team, id) {
             if(mouseIsPressed) {
                 switch(this.id) {
                     case classes.indexOf("Basic Tank"):
+                        bullets.push(new Bullet(
+                            this.pos.x + Math.sin(this.rotation) * 40,
+                            this.pos.y - Math.cos(this.rotation) * 40,
+                            (this.pos.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                            (this.pos.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                            0, this));
+                        this.barrels[0].cooldown = 0;
+						this.pushVel.x -= Math.sin(this.rotation) / 2;
+						this.pushVel.y += Math.cos(this.rotation) / 2;
+                        break;
                     case classes.indexOf("Sniper"):
+                        bullets.push(new Bullet(
+                            this.pos.x + Math.sin(this.rotation) * 40,
+                            this.pos.y - Math.cos(this.rotation) * 40,
+                            (this.pos.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                            (this.pos.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                            0, this));
+                        this.barrels[0].cooldown = 0;
+						this.pushVel.x -= Math.sin(this.rotation) * 1.5;
+						this.pushVel.y += Math.cos(this.rotation) * 1.5;
+                        break;
                     case classes.indexOf("Machine Gunner"):
+                        bullets.push(new Bullet(
+                            this.pos.x + Math.sin(this.rotation) * 40,
+                            this.pos.y - Math.cos(this.rotation) * 40,
+                            (this.pos.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                            (this.pos.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                            0, this));
+                        this.barrels[0].cooldown = 0;
+						this.pushVel.x -= Math.sin(this.rotation) / 2;
+						this.pushVel.y += Math.cos(this.rotation) / 2;
+                        break;
                     case classes.indexOf("Assassin"):
+                        bullets.push(new Bullet(
+                            this.pos.x + Math.sin(this.rotation) * 40,
+                            this.pos.y - Math.cos(this.rotation) * 40,
+                            (this.pos.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                            (this.pos.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                            0, this));
+                        this.barrels[0].cooldown = 0;
+						this.pushVel.x -= Math.sin(this.rotation) * 2;
+						this.pushVel.y += Math.cos(this.rotation) * 2;
+                        break;
                     case classes.indexOf("Destroyer"):
                         bullets.push(new Bullet(
                             this.pos.x + Math.sin(this.rotation) * 40,
@@ -73,6 +114,8 @@ function Tank(x, y, rotation, team, id) {
                             (this.pos.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
                             0, this));
                         this.barrels[0].cooldown = 0;
+						this.pushVel.x -= Math.sin(this.rotation) * 3;
+						this.pushVel.y += Math.cos(this.rotation) * 3;
                         break;
                     case classes.indexOf("Twin"):
                         //Alternate between barrels
@@ -98,6 +141,8 @@ function Tank(x, y, rotation, team, id) {
                                 this.barrel = 0;
                                 break;
                         }
+						this.pushVel.x -= Math.sin(this.rotation) / 2;
+						this.pushVel.y += Math.cos(this.rotation) / 2;
                         break;
                     case classes.indexOf("Flank Guard"):
                         bullets.push(new Bullet(
@@ -127,6 +172,8 @@ function Tank(x, y, rotation, team, id) {
                                     0, this));
                                 this.barrels[2].cooldown = 0;
                                 this.barrel = 1;
+						        this.pushVel.x -= Math.sin(this.rotation) / 2;
+								this.pushVel.y += Math.cos(this.rotation) / 2;
                                 break;
                             case 1:
                                 bullets.push(new Bullet(
@@ -144,6 +191,8 @@ function Tank(x, y, rotation, team, id) {
                                 this.barrels[0].cooldown = 0;
                                 this.barrels[1].cooldown = 0;
                                 this.barrel = 0;
+								this.pushVel.x -= Math.sin(this.rotation);
+								this.pushVel.y += Math.cos(this.rotation);
                                 break;
                         }
                         break;
@@ -300,6 +349,42 @@ function Tank(x, y, rotation, team, id) {
                                 this.barrel = 0;
                                 break;
                         }
+						this.pushVel.x -= Math.sin(this.rotation) / 2;
+						this.pushVel.y += Math.cos(this.rotation) / 2;
+                        break;
+                    case classes.indexOf("Tri-Angle"):
+                        //Alternate between barrels
+                        switch(this.barrel) {
+                            case 0:
+                                bullets.push(new Bullet(
+                                    this.pos.x + Math.sin(this.rotation) * 40,
+                                    this.pos.y - Math.cos(this.rotation) * 40,
+                                    (this.pos.x + Math.sin(this.rotation) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                    (this.pos.y - Math.cos(this.rotation) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                    0, this));
+                                this.barrels[0].cooldown = 0;
+                                this.barrel = 1;
+                                break;
+                            case 1:
+                                bullets.push(new Bullet(
+                                    this.pos.x + Math.sin(this.rotation - (140 * (Math.PI / 180))) * 40,
+                                    this.pos.y - Math.cos(this.rotation - (140 * (Math.PI / 180))) * 40,
+                                    (this.pos.x + Math.sin(this.rotation - (140 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                    (this.pos.y - Math.cos(this.rotation - (140 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                    0, this));
+                                bullets.push(new Bullet(
+                                    this.pos.x + Math.sin(this.rotation + (140 * (Math.PI / 180))) * 40,
+                                    this.pos.y - Math.cos(this.rotation + (140 * (Math.PI / 180))) * 40,
+                                    (this.pos.x + Math.sin(this.rotation + (140 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                    (this.pos.y - Math.cos(this.rotation + (140 * (Math.PI / 180))) * 70) - ((Math.random() * this.spread.y) - (this.spread.y / 2)),
+                                    0, this));
+                                this.barrels[1].cooldown = 0;
+                                this.barrels[2].cooldown = 0;
+                                this.barrel = 0;
+								this.pushVel.x += Math.sin(this.rotation) * 2;
+								this.pushVel.y -= Math.cos(this.rotation) * 2;
+                                break;
+                        }
                         break;
                 }
                 this.cooldown = 0;
@@ -370,6 +455,14 @@ function Tank(x, y, rotation, team, id) {
                 }
             }
         }
+		if(Math.abs(this.pushVel.x) > 0.1) {
+			this.pos.x += this.pushVel.x;
+			this.pushVel.x *= 0.9;
+		} else this.pushVel.x = 0;
+		if(Math.abs(this.pushVel.y) > 0.1) {
+			this.pos.y += this.pushVel.y;
+			this.pushVel.y *= 0.9;
+		} else this.pushVel.y = 0;
     };
 
     this.reevaluateStats = function() {
