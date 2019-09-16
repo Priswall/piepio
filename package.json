@@ -1,6 +1,6 @@
 {
-  name: "piepio",
-  version: "0.0.5",
-  license: "MIT",
+  "name": "piepio",
+  "version": "0.0.5",
+  "license": "MIT",
   "private": false
 }
